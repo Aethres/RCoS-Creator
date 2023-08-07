@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,6 +62,8 @@ namespace WindowsFormsApp1
             {
                 item.generateFiles();
             }
+            System.IO.Directory.CreateDirectory("RCosHelper");
+            File.WriteAllText($".\\RCosHelper\\ReadMe.txt", Process.rcosHelper(processList));
         }
 
         public static List<Process> getProcessList()

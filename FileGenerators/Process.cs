@@ -68,6 +68,14 @@ namespace WindowsFormsApp1
             sb.Replace("%BRIEF%", Description);
             sb.Replace("%YEAR%", DateTime.Today.Year.ToString());
             sb.Replace("%DATE%", DateTime.Today.ToString("d/MM/yyyy"));
+
+            //header only
+            string str = string.Empty;
+            foreach (var item in events)
+            {
+                str += $"\t{item},\n";
+            }
+            sb.Replace("%EVENTS%", str);
             return sb.ToString();
         }
 
@@ -91,6 +99,18 @@ namespace WindowsFormsApp1
             }
 
             return "";
+        }
+
+        public static string rcosHelper(List<Process> processes)
+        {
+            string str = "//Will be written in RcosmainLoop\n";
+            str += "//start processes\n";
+            foreach (var item in processes)
+            {
+                str += $"processStart(&{item.processName})\n";
+            }
+
+            return str;
         }
     }
 }
