@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Components;
+using WindowsFormsApp1.FileGenerators;
 
 namespace WindowsFormsApp1
 {
@@ -40,15 +41,18 @@ namespace WindowsFormsApp1
             addTextBoxes(process.DevCom);
         }
 
-        private void addTextBoxes(List<string> list)
+        private void addTextBoxes(List<ProcessItem> list)
         {
-            for (int i = 0; i < list.Count; i++) 
+            foreach (var item in list)
             {
-                TextBoxR textBox = new TextBoxR(list, i);
-                textBox.Location = newCompenentLocation();
-                textBoxes.Add(textBox);
-                this.Controls.Add(textBox);
-                textBox.Show();
+                if (item.IsActive)
+                {
+                    TextBoxR textBox = new TextBoxR(item);
+                    textBox.Location = newCompenentLocation();
+                    textBoxes.Add(textBox);
+                    this.Controls.Add(textBox);
+                    textBox.Show();
+                }
             }
         }
 

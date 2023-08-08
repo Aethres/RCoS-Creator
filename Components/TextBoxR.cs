@@ -4,25 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.FileGenerators;
 
 namespace WindowsFormsApp1.Components
 {
     public class TextBoxR : TextBox
     {
-        List<string> list;
-        int index;
-        public TextBoxR(List<string> list, int index)
+        ProcessItem processItem;
+        public TextBoxR(ProcessItem processItem)
         {
-            this.list = list;
-            this.index = index;
-            this.Text = list[index];
+            this.processItem = processItem;
+            Text = processItem.Name;
+            TextChanged += (bs, be) =>
+            {
+                Text = Text;
+            };
         }
         public override string Text
         {
             get => base.Text;
             set
             {
-                list.ElementAt(index).Replace(list.ElementAt(index), value);
+                processItem.Name = value;
                 base.Text = value;
             }
         }

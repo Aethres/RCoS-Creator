@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ComboBox comboBox1;
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -43,7 +42,7 @@
             this.timerEventsCount = new System.Windows.Forms.NumericUpDown();
             this.devIOCount = new System.Windows.Forms.NumericUpDown();
             this.devComCount = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.debugName = new System.Windows.Forms.TextBox();
             this.author = new System.Windows.Forms.TextBox();
             this.description = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.configureButton = new System.Windows.Forms.Button();
             comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -72,14 +72,6 @@
             comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             comboBox1.Size = new System.Drawing.Size(234, 24);
             comboBox1.TabIndex = 2;
-            // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(299, 450);
-            this.splitter1.TabIndex = 0;
-            this.splitter1.TabStop = false;
             // 
             // button1
             // 
@@ -113,7 +105,7 @@
             // 
             // events
             // 
-            this.events.Location = new System.Drawing.Point(30, 165);
+            this.events.Location = new System.Drawing.Point(30, 167);
             this.events.Multiline = false;
             this.events.Name = "events";
             this.events.ReadOnly = true;
@@ -123,7 +115,7 @@
             // 
             // timerEvents
             // 
-            this.timerEvents.Location = new System.Drawing.Point(30, 208);
+            this.timerEvents.Location = new System.Drawing.Point(30, 210);
             this.timerEvents.Multiline = false;
             this.timerEvents.Name = "timerEvents";
             this.timerEvents.ReadOnly = true;
@@ -133,7 +125,7 @@
             // 
             // devIO
             // 
-            this.devIO.Location = new System.Drawing.Point(30, 248);
+            this.devIO.Location = new System.Drawing.Point(30, 250);
             this.devIO.Multiline = false;
             this.devIO.Name = "devIO";
             this.devIO.ReadOnly = true;
@@ -143,7 +135,7 @@
             // 
             // devCom
             // 
-            this.devCom.Location = new System.Drawing.Point(30, 292);
+            this.devCom.Location = new System.Drawing.Point(30, 294);
             this.devCom.Multiline = false;
             this.devCom.Name = "devCom";
             this.devCom.ReadOnly = true;
@@ -179,7 +171,7 @@
             // 
             // eventsCount
             // 
-            this.eventsCount.Location = new System.Drawing.Point(181, 167);
+            this.eventsCount.Location = new System.Drawing.Point(181, 169);
             this.eventsCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -192,7 +184,7 @@
             // 
             // timerEventsCount
             // 
-            this.timerEventsCount.Location = new System.Drawing.Point(181, 209);
+            this.timerEventsCount.Location = new System.Drawing.Point(181, 211);
             this.timerEventsCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -205,7 +197,7 @@
             // 
             // devIOCount
             // 
-            this.devIOCount.Location = new System.Drawing.Point(181, 250);
+            this.devIOCount.Location = new System.Drawing.Point(181, 252);
             this.devIOCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -218,7 +210,7 @@
             // 
             // devComCount
             // 
-            this.devComCount.Location = new System.Drawing.Point(181, 294);
+            this.devComCount.Location = new System.Drawing.Point(181, 296);
             this.devComCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -229,35 +221,35 @@
             this.devComCount.TabIndex = 20;
             this.devComCount.ValueChanged += new System.EventHandler(this.devComCount_ValueChanged);
             // 
-            // button2
+            // resetButton
             // 
-            this.button2.Location = new System.Drawing.Point(270, 122);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(29, 22);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.resetButton.Location = new System.Drawing.Point(181, 324);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(83, 42);
+            this.resetButton.TabIndex = 21;
+            this.resetButton.Text = "Reset Process";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // debugName
             // 
-            this.debugName.Location = new System.Drawing.Point(430, 40);
+            this.debugName.Location = new System.Drawing.Point(430, 210);
             this.debugName.Name = "debugName";
-            this.debugName.Size = new System.Drawing.Size(100, 22);
+            this.debugName.Size = new System.Drawing.Size(374, 22);
             this.debugName.TabIndex = 25;
             this.debugName.TextChanged += new System.EventHandler(this.debugName_TextChanged);
             // 
             // author
             // 
-            this.author.Location = new System.Drawing.Point(430, 81);
+            this.author.Location = new System.Drawing.Point(430, 36);
             this.author.Name = "author";
-            this.author.Size = new System.Drawing.Size(100, 22);
+            this.author.Size = new System.Drawing.Size(367, 22);
             this.author.TabIndex = 26;
             this.author.TextChanged += new System.EventHandler(this.author_TextChanged);
             // 
             // description
             // 
-            this.description.Location = new System.Drawing.Point(430, 122);
+            this.description.Location = new System.Drawing.Point(430, 76);
             this.description.Multiline = true;
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(374, 109);
@@ -288,7 +280,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(305, 40);
+            this.label1.Location = new System.Drawing.Point(305, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 36;
@@ -299,7 +291,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(305, 81);
+            this.label2.Location = new System.Drawing.Point(305, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 20);
             this.label2.TabIndex = 37;
@@ -310,17 +302,28 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(305, 123);
+            this.label3.Location = new System.Drawing.Point(305, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 20);
             this.label3.TabIndex = 38;
             this.label3.Text = "Description";
+            // 
+            // configureButton
+            // 
+            this.configureButton.Location = new System.Drawing.Point(30, 324);
+            this.configureButton.Name = "configureButton";
+            this.configureButton.Size = new System.Drawing.Size(136, 42);
+            this.configureButton.TabIndex = 39;
+            this.configureButton.Text = "ConfigueProcess";
+            this.configureButton.UseVisualStyleBackColor = true;
+            this.configureButton.Click += new System.EventHandler(this.configureButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 450);
+            this.Controls.Add(this.configureButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -329,7 +332,7 @@
             this.Controls.Add(this.description);
             this.Controls.Add(this.author);
             this.Controls.Add(this.debugName);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.devComCount);
             this.Controls.Add(this.devIOCount);
             this.Controls.Add(this.timerEventsCount);
@@ -344,7 +347,6 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(comboBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.splitter1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -359,8 +361,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
@@ -374,7 +374,7 @@
         private System.Windows.Forms.NumericUpDown timerEventsCount;
         private System.Windows.Forms.NumericUpDown devIOCount;
         private System.Windows.Forms.NumericUpDown devComCount;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.TextBox debugName;
         private System.Windows.Forms.TextBox author;
         private System.Windows.Forms.TextBox description;
@@ -383,6 +383,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button configureButton;
     }
 }
 

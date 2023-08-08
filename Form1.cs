@@ -86,20 +86,11 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (process != null)
-            {
-                ProcessWindow form = new ProcessWindow(process);
-                form.Show();
-            }
-        }
-
         private void eventsCount_ValueChanged(object sender, EventArgs e)
         {
             if (process != null)
             {
-                Program.listUpdate(process.Events, (int)eventsCount.Value, "Event ");
+                Program.listUpdate(process.Events, (int)eventsCount.Value, "Event");
             }
         }
 
@@ -107,7 +98,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "Timer Event ");
+                Program.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "Timer Event");
             }
         }
 
@@ -115,7 +106,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.DevIO, (int)devIOCount.Value, "DevIO ");
+                Program.listUpdate(process.DevIO, (int)devIOCount.Value, "DevIO");
             }
         }
 
@@ -123,7 +114,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.DevCom, (int)devComCount.Value, "DevCom ");
+                Program.listUpdate(process.DevCom, (int)devComCount.Value, "DevCom");
             }
         }
 
@@ -159,6 +150,48 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void configureButton_Click(object sender, EventArgs e)
+        {
+            if (process != null)
+            {
+                ProcessWindow form = new ProcessWindow(process);
+                form.Show();
+            }
+        }
 
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            if (process != null)
+            {
+                DialogResult confirmResult = MessageBox.Show($"{process.ProcessName} will be reset!",
+                                     $"Confirm {process.ProcessName} reset!",
+                                     MessageBoxButtons.YesNo);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    process.resetProcess();
+                    debugName.Text = "";
+                    author.Text = "";
+                    description.Text = "";
+                    debugPorts.Text = "";
+                    timerEventsCount.Value = 0;
+                    eventsCount.Value = 0;
+                    devIOCount.Value = 0;
+                    devComCount.Value = 0;
+
+                    //debugName_TextChanged(sender, e);
+                    //author_TextChanged(sender, e);
+                    //description_TextChanged(sender, e);
+                    //debugPorts_TextChanged(sender, e);
+                    //eventsCount_ValueChanged(sender, e);
+                    //timerEventsCount_ValueChanged(sender, e);
+                    //devIOCount_ValueChanged(sender, e);
+                    //devComCount_ValueChanged(sender, e);
+
+                }
+
+
+            }
+        }
     }
 }

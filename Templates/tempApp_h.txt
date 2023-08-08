@@ -31,8 +31,7 @@
 
 /// @brief  Events of a %APPNAMEPC% process
 typedef enum
-{
-%EVENTS%
+{%EVENTS%
 } te%APPNAMEPC%Events;
 
 /// @brief  Parameters of a %APPNAMEPC% process

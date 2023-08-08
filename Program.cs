@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.FileGenerators;
 
 namespace WindowsFormsApp1
 {
@@ -27,7 +28,10 @@ namespace WindowsFormsApp1
             int diff = Math.Abs(count - processList.Count);
             if (processList.Count > count)
             {
-                processList.RemoveRange(count, diff);
+                foreach (var item in processList.GetRange(count, diff))
+                {
+                    item.IsActive = false;
+                }
             }
             else if(processList.Count < count)
             {
@@ -38,21 +42,33 @@ namespace WindowsFormsApp1
                     processList.Add(new Process(name, processList));
                 }
             }
+            for (int i = 0; i < count; i++)
+            {
+                processList.ElementAt(i).IsActive = true;
+            }
         }
 
-        public static void listUpdate(List<string> list, int count, string name)
+        public static void listUpdate(List<ProcessItem> list, int count, string name)
         {
             int diff = Math.Abs(count - list.Count);
             if (list.Count > count && list.Any())
             {
-                list.RemoveRange(count, diff);
+                foreach (var item in list.GetRange(count, diff))
+                {
+                    item.IsActive = false;
+                }
             }
             else if (list.Count < count)
             {
                 for (int i = 0; i < diff; i++)
                 {
-                    list.Add(name + (list.Count + 1).ToString());
+                    list.Add(new ProcessItem(name + (list.Count + 1).ToString()));
                 }
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                list.ElementAt(i).IsActive = true;
             }
         }
 
@@ -60,7 +76,10 @@ namespace WindowsFormsApp1
         {
             foreach (var item in processList)
             {
-                item.generateFiles();
+                if (item.IsActive)
+                {
+                    item.generateFiles();
+                }
             }
             System.IO.Directory.CreateDirectory("RCosHelper");
             File.WriteAllText($".\\RCosHelper\\ReadMe.txt", Process.rcosHelper(processList));
@@ -70,5 +89,6 @@ namespace WindowsFormsApp1
         {
             return processList;
         }
+
     }
 }

@@ -5,30 +5,34 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using WindowsFormsApp1.FileGenerators;
 using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
     public class Process
     {
+        bool isActive;
         string description;
         string author;
         string debugName;
         string debugPorts;
         string processName;
         List<Process> processList;
-        List<string> events;
-        List<string> timerEvents;
-        List<string> devIO;
-        List<string> devCom;
+        List<ProcessItem> events;
+        List<ProcessItem> timerEvents;
+        List<ProcessItem> devIO;
+        List<ProcessItem> devCom;
         public Process(string processName, List<Process> processList)
         {
             this.ProcessName = processName;
             this.ProcessList = processList;
-            events = new List<string>();
-            timerEvents = new List<string>();
-            devIO = new List<string>();
-            devCom = new List<string>();
+            IsActive = true;
+            Events = new List<ProcessItem>();
+            TimerEvents = new List<ProcessItem>();
+            DevIO = new List<ProcessItem>();
+            DevCom = new List<ProcessItem>();
             description = "";
             author = "";
             debugName = "";
@@ -36,15 +40,16 @@ namespace WindowsFormsApp1
         }
 
         public List<Process> ProcessList { get => processList; set => processList = value; }
-        public List<string> Events { get => events; set => events = value; }
-        public List<string> TimerEvents { get => timerEvents; set => timerEvents = value; }
-        public List<string> DevIO { get => devIO; set => devIO = value; }
-        public List<string> DevCom { get => devCom; set => devCom = value; }
         public string Description { get => description; set => description = value; }
         public string Author { get => author; set => author = value; }
         public string DebugName { get => debugName; set => debugName = value; }
         public string DebugPorts { get => debugPorts; set => debugPorts = value; }
         public string ProcessName { get => processName; set => processName = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
+        internal List<ProcessItem> Events { get => events; set => events = value; }
+        internal List<ProcessItem> TimerEvents { get => timerEvents; set => timerEvents = value; }
+        internal List<ProcessItem> DevIO { get => devIO; set => devIO = value; }
+        internal List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
 
         public void generateFiles()
         {
@@ -73,9 +78,13 @@ namespace WindowsFormsApp1
             string str = string.Empty;
             foreach (var item in events)
             {
-                str += $"\t{item},\n";
+                if (item.IsActive)
+                {
+                    str += $"\n\t{item.Name},";
+                }
             }
             sb.Replace("%EVENTS%", str);
+
             return sb.ToString();
         }
 
@@ -107,10 +116,27 @@ namespace WindowsFormsApp1
             str += "//start processes\n";
             foreach (var item in processes)
             {
-                str += $"processStart(&{item.processName})\n";
+                if (item.isActive)
+                {
+                    str += $"processStart(&{item.processName})\n";
+                }
             }
 
             return str;
+        }
+
+        public void resetProcess()
+        {
+            ProcessName = ("Process" + (processList.IndexOf(this) + 1).ToString()) ;
+            IsActive = true;
+            Events = new List<ProcessItem>();
+            TimerEvents = new List<ProcessItem>();
+            DevIO = new List<ProcessItem>();
+            DevCom = new List<ProcessItem>();
+            description = "";
+            author = "";
+            debugName = "";
+            debugPorts = "";
         }
     }
 }
