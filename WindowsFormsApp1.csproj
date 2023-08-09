@@ -90,19 +90,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProcessWindow.cs">
-      <SubType>Form</SubType>
+    <Compile Include="ProcessConfig.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProcessWindow.Designer.cs">
-      <DependentUpon>ProcessWindow.cs</DependentUpon>
+    <Compile Include="ProcessConfig.Designer.cs">
+      <DependentUpon>ProcessConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProcessWindow.resx">
-      <DependentUpon>ProcessWindow.cs</DependentUpon>
+    <EmbeddedResource Include="ProcessConfig.resx">
+      <DependentUpon>ProcessConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,6 +123,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\RCosIcon.bmp" />
+    <None Include="Resources\RCosIcon.ico" />
     <Content Include="Templates\tempApp_c.txt" />
     <Content Include="Templates\tempApp_h.txt" />
     <None Include="WindowsFormsApp1_TemporaryKey.pfx" />

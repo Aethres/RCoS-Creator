@@ -61,6 +61,16 @@ namespace WindowsFormsApp1.Properties {
         }
         
         /// <summary>
+        ///   (Simge) öğesine benzeyen System.Drawing.Icon türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Icon RCosIcon {
+            get {
+                object obj = ResourceManager.GetObject("RCosIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   /** @file       %FILENAMELC%.c
         /// *  @brief      %FILENAMEUC% application program file
         /// *  @copyright  (c) %YEAR%-Arcelik - All Rights Reserved

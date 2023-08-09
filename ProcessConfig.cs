@@ -12,12 +12,12 @@ using WindowsFormsApp1.FileGenerators;
 
 namespace WindowsFormsApp1
 {
-    public partial class ProcessWindow : Form
+    public partial class ProcessConfig : UserControl
     {
         private Process process;
         private List<TextBoxR> textBoxes;
         private Point point;
-        public ProcessWindow(Process process)
+        public ProcessConfig(Process process)
         {
             InitializeComponent();
             this.process = process;

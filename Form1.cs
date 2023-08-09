@@ -14,10 +14,37 @@ namespace WindowsFormsApp1
     {
         List<Process> processList;
         Process process;
+        ProcessConfig processConfig;
         public Form1(List<Process> processList)
         {
+            WindowState = FormWindowState.Maximized;
+            Text = "RCos+ Creator";
+            Icon = Properties.Resources.RCosIcon;
             this.processList = processList;
+
             InitializeComponent();
+        }
+
+        private void UpdateProcessConfig()
+        {
+            if (process != null)
+            {
+                ProcessConfig oldProcessConfig = null;
+                if (processConfig != null)
+                {
+                    oldProcessConfig = processConfig;
+                }
+
+                processConfig = new ProcessConfig(process);
+                processConfig.Location = new Point(660, 0);
+                processConfig.Show();
+
+                this.Controls.Add(processConfig);
+                if (oldProcessConfig != null)
+                {
+                    oldProcessConfig.Hide();
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,7 +109,9 @@ namespace WindowsFormsApp1
                 author.Text = process.Author;
                 debugPorts.Text = process.DebugPorts;
             }
-            
+
+            UpdateProcessConfig();
+
 
         }
 
@@ -92,6 +121,7 @@ namespace WindowsFormsApp1
             {
                 Program.listUpdate(process.Events, (int)eventsCount.Value, "Event");
             }
+            UpdateProcessConfig();
         }
 
         private void timerEventsCount_ValueChanged(object sender, EventArgs e)
@@ -100,6 +130,7 @@ namespace WindowsFormsApp1
             {
                 Program.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "Timer Event");
             }
+            UpdateProcessConfig();
         }
 
         private void devIOCount_ValueChanged(object sender, EventArgs e)
@@ -108,6 +139,7 @@ namespace WindowsFormsApp1
             {
                 Program.listUpdate(process.DevIO, (int)devIOCount.Value, "DevIO");
             }
+            UpdateProcessConfig();
         }
 
         private void devComCount_ValueChanged(object sender, EventArgs e)
@@ -116,6 +148,7 @@ namespace WindowsFormsApp1
             {
                 Program.listUpdate(process.DevCom, (int)devComCount.Value, "DevCom");
             }
+            UpdateProcessConfig();
         }
 
         private void debugName_TextChanged(object sender, EventArgs e)
@@ -150,15 +183,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void configureButton_Click(object sender, EventArgs e)
-        {
-            if (process != null)
-            {
-                ProcessWindow form = new ProcessWindow(process);
-                form.Show();
-            }
-        }
-
         private void resetButton_Click(object sender, EventArgs e)
         {
             if (process != null)
@@ -178,16 +202,6 @@ namespace WindowsFormsApp1
                     eventsCount.Value = 0;
                     devIOCount.Value = 0;
                     devComCount.Value = 0;
-
-                    //debugName_TextChanged(sender, e);
-                    //author_TextChanged(sender, e);
-                    //description_TextChanged(sender, e);
-                    //debugPorts_TextChanged(sender, e);
-                    //eventsCount_ValueChanged(sender, e);
-                    //timerEventsCount_ValueChanged(sender, e);
-                    //devIOCount_ValueChanged(sender, e);
-                    //devComCount_ValueChanged(sender, e);
-
                 }
 
 

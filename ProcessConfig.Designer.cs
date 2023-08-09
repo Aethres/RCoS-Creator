@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class ProcessWindow
+    partial class ProcessConfig
     {
         /// <summary>
         /// Required designer variable.

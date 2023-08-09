@@ -51,7 +51,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.configureButton = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.wdwdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dwdwdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.test2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.test3ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test1ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.test2ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.test3ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -59,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.timerEventsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.devIOCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.devComCount)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -66,12 +79,22 @@
             comboBox1.AllowDrop = true;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] {
-            "CyPress PSOC4"});
+            "CyPress PSOC4",
+            "CyPress PSOC6",
+            "Renesas RA2",
+            "NXP ke02",
+            "NXP ke04",
+            "NXP ke14",
+            "NXP ke15",
+            "NXP ke16",
+            "AVR",
+            "Sinowealth"});
             comboBox1.Location = new System.Drawing.Point(30, 34);
             comboBox1.Name = "comboBox1";
             comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             comboBox1.Size = new System.Drawing.Size(234, 24);
             comboBox1.TabIndex = 2;
+            comboBox1.Text = "Please Select MCU";
             // 
             // button1
             // 
@@ -223,9 +246,9 @@
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(181, 324);
+            this.resetButton.Location = new System.Drawing.Point(30, 324);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(83, 42);
+            this.resetButton.Size = new System.Drawing.Size(234, 42);
             this.resetButton.TabIndex = 21;
             this.resetButton.Text = "Reset Process";
             this.resetButton.UseVisualStyleBackColor = true;
@@ -308,22 +331,108 @@
             this.label3.TabIndex = 38;
             this.label3.Text = "Description";
             // 
-            // configureButton
+            // menuStrip1
             // 
-            this.configureButton.Location = new System.Drawing.Point(30, 324);
-            this.configureButton.Name = "configureButton";
-            this.configureButton.Size = new System.Drawing.Size(136, 42);
-            this.configureButton.TabIndex = 39;
-            this.configureButton.Text = "ConfigueProcess";
-            this.configureButton.UseVisualStyleBackColor = true;
-            this.configureButton.Click += new System.EventHandler(this.configureButton_Click);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wdwdToolStripMenuItem,
+            this.dwdwdToolStripMenuItem,
+            this.openToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1517, 28);
+            this.menuStrip1.TabIndex = 40;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // wdwdToolStripMenuItem
+            // 
+            this.wdwdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem,
+            this.test2ToolStripMenuItem,
+            this.test3ToolStripMenuItem});
+            this.wdwdToolStripMenuItem.Name = "wdwdToolStripMenuItem";
+            this.wdwdToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.wdwdToolStripMenuItem.Text = "Save";
+            // 
+            // dwdwdToolStripMenuItem
+            // 
+            this.dwdwdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem1,
+            this.test2ToolStripMenuItem1,
+            this.test3ToolStripMenuItem1});
+            this.dwdwdToolStripMenuItem.Name = "dwdwdToolStripMenuItem";
+            this.dwdwdToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.dwdwdToolStripMenuItem.Text = "Help";
+            // 
+            // test1ToolStripMenuItem
+            // 
+            this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.test1ToolStripMenuItem.Text = "Test1";
+            // 
+            // test2ToolStripMenuItem
+            // 
+            this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.test2ToolStripMenuItem.Text = "Test2";
+            // 
+            // test3ToolStripMenuItem
+            // 
+            this.test3ToolStripMenuItem.Name = "test3ToolStripMenuItem";
+            this.test3ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.test3ToolStripMenuItem.Text = "Test3";
+            // 
+            // test1ToolStripMenuItem1
+            // 
+            this.test1ToolStripMenuItem1.Name = "test1ToolStripMenuItem1";
+            this.test1ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.test1ToolStripMenuItem1.Text = "Test1";
+            // 
+            // test2ToolStripMenuItem1
+            // 
+            this.test2ToolStripMenuItem1.Name = "test2ToolStripMenuItem1";
+            this.test2ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.test2ToolStripMenuItem1.Text = "Test2";
+            // 
+            // test3ToolStripMenuItem1
+            // 
+            this.test3ToolStripMenuItem1.Name = "test3ToolStripMenuItem1";
+            this.test3ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.test3ToolStripMenuItem1.Text = "Test3";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem2,
+            this.test2ToolStripMenuItem2,
+            this.test3ToolStripMenuItem2});
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // test1ToolStripMenuItem2
+            // 
+            this.test1ToolStripMenuItem2.Name = "test1ToolStripMenuItem2";
+            this.test1ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.test1ToolStripMenuItem2.Text = "Test1";
+            // 
+            // test2ToolStripMenuItem2
+            // 
+            this.test2ToolStripMenuItem2.Name = "test2ToolStripMenuItem2";
+            this.test2ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.test2ToolStripMenuItem2.Text = "Test2";
+            // 
+            // test3ToolStripMenuItem2
+            // 
+            this.test3ToolStripMenuItem2.Name = "test3ToolStripMenuItem2";
+            this.test3ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.test3ToolStripMenuItem2.Text = "Test3";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 450);
-            this.Controls.Add(this.configureButton);
+            this.ClientSize = new System.Drawing.Size(1517, 450);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -347,6 +456,8 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(comboBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -355,6 +466,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.timerEventsCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.devIOCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.devComCount)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +496,19 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button configureButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem wdwdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dwdwdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem2;
     }
 }
 

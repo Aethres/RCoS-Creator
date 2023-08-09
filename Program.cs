@@ -20,7 +20,11 @@ namespace WindowsFormsApp1
             processList = new List<Process>();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(processList));
+
+            Form1 form = new Form1(processList);
+
+            Application.Run(form);
+
         }
 
         public static void processListUpdate(int count)
