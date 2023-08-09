@@ -20,7 +20,8 @@ namespace WindowsFormsApp1
             Icon = Properties.Resources.RCosIcon;
 
             this.processList = processList;
-            
+            AutoScroll = true;
+
             InitializeComponent();
             ComponentLocker();
         }
@@ -36,7 +37,8 @@ namespace WindowsFormsApp1
                 }
 
                 processConfig = new ProcessConfig(process);
-                processConfig.Location = new Point(660, 20);
+                processConfig.AutoScroll = true;
+                processConfig.Location = new Point(30, 300);
                 processConfig.Show();
 
                 this.Controls.Add(processConfig);
@@ -90,7 +92,7 @@ namespace WindowsFormsApp1
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            Program.processListUpdate( (int) numericUpDown1.Value);
+            Process.processListUpdate(processList, (int) numericUpDown1.Value);
             if (numericUpDown1.Value < numericUpDown2.Value)
             {
                 numericUpDown2.Value = numericUpDown1.Value;
@@ -160,7 +162,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.Events, (int)eventsCount.Value, "Event");
+                Process.listUpdate(process.Events, (int)eventsCount.Value, "Event");
             }
             UpdateProcessConfig();
         }
@@ -169,7 +171,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "Timer Event");
+                Process.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "Timer Event");
             }
             UpdateProcessConfig();
         }
@@ -178,7 +180,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.DevIO, (int)devIOCount.Value, "DevIO");
+                Process.listUpdate(process.DevIO, (int)devIOCount.Value, "DevIO");
             }
             UpdateProcessConfig();
         }
@@ -187,7 +189,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Program.listUpdate(process.DevCom, (int)devComCount.Value, "DevCom");
+                Process.listUpdate(process.DevCom, (int)devComCount.Value, "DevCom");
             }
             UpdateProcessConfig();
         }
