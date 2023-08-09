@@ -20,8 +20,9 @@ namespace WindowsFormsApp1
             Icon = Properties.Resources.RCosIcon;
 
             this.processList = processList;
-
+            
             InitializeComponent();
+            ComponentLocker();
         }
 
         private void UpdateProcessConfig()
@@ -44,6 +45,41 @@ namespace WindowsFormsApp1
                     oldProcessConfig.Hide();
                 }
             }
+            else
+            {
+                processConfig.Location = new Point(660, 520);
+                processConfig.Hide();
+            }
+        }
+
+        private void ComponentLocker()
+        {
+            if (process == null)
+            {
+                numericUpDown2.ReadOnly = true;
+                eventsCount.ReadOnly = true;
+                timerEventsCount.ReadOnly = true;
+                devIOCount.ReadOnly = true;
+                devComCount.ReadOnly = true;
+                debugName.ReadOnly = true;
+                author.ReadOnly = true;
+                description.ReadOnly = true;
+                debugPorts.ReadOnly = true;
+                resetButton.Enabled = false;
+            }
+            else
+            {
+                numericUpDown2.ReadOnly = false;
+                eventsCount.ReadOnly = false;
+                timerEventsCount.ReadOnly = false;
+                devIOCount.ReadOnly = false;
+                devComCount.ReadOnly = false;
+                debugName.ReadOnly = false;
+                author.ReadOnly = false;
+                description.ReadOnly = false;
+                debugPorts.ReadOnly = false;
+                resetButton.Enabled = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,30 +99,35 @@ namespace WindowsFormsApp1
             {
                 numericUpDown2.Value = 1;
             }
+            //UpdateProcessConfig();
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            if ((int) numericUpDown1.Value == 0)
+            if ((int) numericUpDown1.Value == 0 && (int) numericUpDown2.Value != 0)
             {
                 numericUpDown2.Value = 0;
-                process = null;
             }
-            else if ((int) numericUpDown2.Value == 0)
+            else if ((int)numericUpDown1.Value != 0 && (int) numericUpDown2.Value == 0)
             {
-                numericUpDown2.Value = 1;
                 process = processList.ElementAt(0);
+                numericUpDown2.Value = 1;
             }
-            else if (numericUpDown2.Value > numericUpDown1.Value)
+            else if ((int)numericUpDown1.Value != 0 && numericUpDown2.Value > numericUpDown1.Value)
             {
+                process = processList.ElementAt((int)numericUpDown1.Value - 1);
                 numericUpDown2.Value = numericUpDown1.Value;
-                process = processList.ElementAt( (int) numericUpDown1.Value - 1);
             }
-            else
+            else if ((int)numericUpDown1.Value != 0)
             {
-                    process = processList.ElementAt(
-                    numericUpDown1.Value < numericUpDown2.Value?
+                process = processList.ElementAt(
+                    numericUpDown1.Value < numericUpDown2.Value ?
                     (int) numericUpDown1.Value - 1 : (int)numericUpDown2.Value - 1);
+            }
+
+            if ((int) numericUpDown2.Value == 0)
+            {
+                process = null;
             }
 
             if (process == null)
@@ -109,6 +150,7 @@ namespace WindowsFormsApp1
                 debugPorts.Text = process.DebugPorts;
             }
 
+            ComponentLocker();
             UpdateProcessConfig();
 
 

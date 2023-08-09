@@ -7,7 +7,7 @@
     <ProjectGuid>{11C4F0C1-4D30-400C-8607-2723B81AC947}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
-    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <AssemblyName>RCos+ Creator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -93,10 +93,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProcessConfig.cs">
+    <Compile Include="Components\ProcessConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProcessConfig.Designer.cs">
+    <Compile Include="Components\ProcessConfig.Designer.cs">
       <DependentUpon>ProcessConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -104,7 +104,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProcessConfig.resx">
+    <EmbeddedResource Include="Components\ProcessConfig.resx">
       <DependentUpon>ProcessConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

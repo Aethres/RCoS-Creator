@@ -52,11 +52,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.wdwdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dwdwdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.test2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.test3ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -266,7 +266,7 @@
             // 
             this.author.Location = new System.Drawing.Point(430, 36);
             this.author.Name = "author";
-            this.author.Size = new System.Drawing.Size(367, 22);
+            this.author.Size = new System.Drawing.Size(374, 22);
             this.author.TabIndex = 26;
             this.author.TextChanged += new System.EventHandler(this.author_TextChanged);
             // 
@@ -335,8 +335,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wdwdToolStripMenuItem,
-            this.dwdwdToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.helpToolStripMenuItem,
             this.openToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -344,60 +344,60 @@
             this.menuStrip1.TabIndex = 40;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // wdwdToolStripMenuItem
+            // saveToolStripMenuItem
             // 
-            this.wdwdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.test1ToolStripMenuItem,
             this.test2ToolStripMenuItem,
             this.test3ToolStripMenuItem});
-            this.wdwdToolStripMenuItem.Name = "wdwdToolStripMenuItem";
-            this.wdwdToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
-            this.wdwdToolStripMenuItem.Text = "Save";
-            // 
-            // dwdwdToolStripMenuItem
-            // 
-            this.dwdwdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.test1ToolStripMenuItem1,
-            this.test2ToolStripMenuItem1,
-            this.test3ToolStripMenuItem1});
-            this.dwdwdToolStripMenuItem.Name = "dwdwdToolStripMenuItem";
-            this.dwdwdToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.dwdwdToolStripMenuItem.Text = "Help";
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.saveToolStripMenuItem.Text = "Save";
             // 
             // test1ToolStripMenuItem
             // 
             this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
-            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.test1ToolStripMenuItem.Text = "Test1";
             // 
             // test2ToolStripMenuItem
             // 
             this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
-            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.test2ToolStripMenuItem.Text = "Test2";
             // 
             // test3ToolStripMenuItem
             // 
             this.test3ToolStripMenuItem.Name = "test3ToolStripMenuItem";
-            this.test3ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.test3ToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.test3ToolStripMenuItem.Text = "Test3";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem1,
+            this.test2ToolStripMenuItem1,
+            this.test3ToolStripMenuItem1});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // test1ToolStripMenuItem1
             // 
             this.test1ToolStripMenuItem1.Name = "test1ToolStripMenuItem1";
-            this.test1ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.test1ToolStripMenuItem1.Size = new System.Drawing.Size(126, 26);
             this.test1ToolStripMenuItem1.Text = "Test1";
             // 
             // test2ToolStripMenuItem1
             // 
             this.test2ToolStripMenuItem1.Name = "test2ToolStripMenuItem1";
-            this.test2ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.test2ToolStripMenuItem1.Size = new System.Drawing.Size(126, 26);
             this.test2ToolStripMenuItem1.Text = "Test2";
             // 
             // test3ToolStripMenuItem1
             // 
             this.test3ToolStripMenuItem1.Name = "test3ToolStripMenuItem1";
-            this.test3ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.test3ToolStripMenuItem1.Size = new System.Drawing.Size(126, 26);
             this.test3ToolStripMenuItem1.Text = "Test3";
             // 
             // openToolStripMenuItem
@@ -413,19 +413,19 @@
             // test1ToolStripMenuItem2
             // 
             this.test1ToolStripMenuItem2.Name = "test1ToolStripMenuItem2";
-            this.test1ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.test1ToolStripMenuItem2.Size = new System.Drawing.Size(126, 26);
             this.test1ToolStripMenuItem2.Text = "Test1";
             // 
             // test2ToolStripMenuItem2
             // 
             this.test2ToolStripMenuItem2.Name = "test2ToolStripMenuItem2";
-            this.test2ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.test2ToolStripMenuItem2.Size = new System.Drawing.Size(126, 26);
             this.test2ToolStripMenuItem2.Text = "Test2";
             // 
             // test3ToolStripMenuItem2
             // 
             this.test3ToolStripMenuItem2.Name = "test3ToolStripMenuItem2";
-            this.test3ToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.test3ToolStripMenuItem2.Size = new System.Drawing.Size(126, 26);
             this.test3ToolStripMenuItem2.Text = "Test3";
             // 
             // Form1
@@ -497,8 +497,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem wdwdToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dwdwdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem;
