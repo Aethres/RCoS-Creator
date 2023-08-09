@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1.csproj", "{11C4F0C1-4D30-400C-8607-2723B81AC947}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCos+ Creator", "RCos+ Creator.csproj", "{11C4F0C1-4D30-400C-8607-2723B81AC947}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

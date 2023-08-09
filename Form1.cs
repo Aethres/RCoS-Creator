@@ -17,9 +17,8 @@ namespace WindowsFormsApp1
         ProcessConfig processConfig;
         public Form1(List<Process> processList)
         {
-            WindowState = FormWindowState.Maximized;
-            Text = "RCos+ Creator";
             Icon = Properties.Resources.RCosIcon;
+
             this.processList = processList;
 
             InitializeComponent();
@@ -36,7 +35,7 @@ namespace WindowsFormsApp1
                 }
 
                 processConfig = new ProcessConfig(process);
-                processConfig.Location = new Point(660, 0);
+                processConfig.Location = new Point(660, 20);
                 processConfig.Show();
 
                 this.Controls.Add(processConfig);

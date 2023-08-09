@@ -22,6 +22,8 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
 
             Form1 form = new Form1(processList);
+            form.WindowState = FormWindowState.Maximized;
+            form.Text = "RCos+ Creator";
 
             Application.Run(form);
 
