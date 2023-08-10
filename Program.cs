@@ -10,6 +10,7 @@ namespace WindowsFormsApp1
 {
     internal static class Program
     {
+        public const string APP_VERSION = "1.0";
         private static List<Process> processList;
         /// <summary>
         /// Uygulamanın ana girdi noktası.
@@ -22,8 +23,7 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
 
             Form1 form = new Form1(processList);
-            form.WindowState = FormWindowState.Maximized;
-            form.Text = "RCos+ Creator";
+            form.Text = "RCoS+ Creator";
 
             Application.Run(form);
 

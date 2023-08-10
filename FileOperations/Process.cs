@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using WindowsFormsApp1.FileGenerators;
 using WindowsFormsApp1.Properties;
 
@@ -24,6 +26,10 @@ namespace WindowsFormsApp1
         List<ProcessItem> timerEvents;
         List<ProcessItem> devIO;
         List<ProcessItem> devCom;
+
+        public Process()
+        {
+        }
         public Process(string processName, List<Process> processList)
         {
             ProcessName = processName;
@@ -39,6 +45,7 @@ namespace WindowsFormsApp1
             debugPorts = "";
         }
 
+        [JsonIgnore]
         public List<Process> ProcessList { get => processList; set => processList = value; }
         public string Description { get => description; set => description = value; }
         public string Author { get => author; set => author = value; }
@@ -46,9 +53,13 @@ namespace WindowsFormsApp1
         public string DebugPorts { get => debugPorts; set => debugPorts = value; }
         public string ProcessName { get => processName; set => processName = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
+        [JsonProperty]
         internal List<ProcessItem> Events { get => events; set => events = value; }
+        [JsonProperty]
         internal List<ProcessItem> TimerEvents { get => timerEvents; set => timerEvents = value; }
+        [JsonProperty]
         internal List<ProcessItem> DevIO { get => devIO; set => devIO = value; }
+        [JsonProperty]
         internal List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
 
         public void generateFiles()

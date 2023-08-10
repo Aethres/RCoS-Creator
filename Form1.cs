@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
@@ -24,6 +29,7 @@ namespace WindowsFormsApp1
 
             InitializeComponent();
             ComponentLocker();
+            versionToolStripMenuItem1.Text = "v" + Program.APP_VERSION;
         }
 
         private void UpdateProcessConfig()
@@ -106,6 +112,19 @@ namespace WindowsFormsApp1
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
+            if (processList.Count() > 0)
+            {
+                string earlierDesc = processList.First().Description;
+                foreach (var item in processList)
+                {
+                    if (item.Description == "")
+                    {
+                        item.Description = description.Text;
+                    }
+                    earlierDesc = item.Description;
+
+                }
+            }
             if ((int) numericUpDown1.Value == 0 && (int) numericUpDown2.Value != 0)
             {
                 numericUpDown2.Value = 0;
@@ -151,7 +170,6 @@ namespace WindowsFormsApp1
                 author.Text = process.Author;
                 debugPorts.Text = process.DebugPorts;
             }
-
             ComponentLocker();
             UpdateProcessConfig();
 
@@ -206,7 +224,10 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                process.Author = author.Text;
+                foreach (var item in processList)
+                {
+                    item.Author = author.Text;
+                }
             }
         }
 
@@ -238,7 +259,6 @@ namespace WindowsFormsApp1
                 {
                     process.resetProcess();
                     debugName.Text = "";
-                    author.Text = "";
                     description.Text = "";
                     debugPorts.Text = "";
                     timerEventsCount.Value = 0;
@@ -249,6 +269,21 @@ namespace WindowsFormsApp1
 
 
             }
+        }
+
+        private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string str = File.ReadAllText(Path.GetFullPath($".\\app\\Asd.json"));
+            processList = JsonConvert.DeserializeObject<List<Process>>(str);
+            process = null;
+            numericUpDown1.Value = processList.Count;
+            numericUpDown2_ValueChanged(sender, e);
+        }
+
+        private void test2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string jsonString = JsonConvert.SerializeObject(processList);
+            File.WriteAllText($".\\app\\Asd.json", jsonString);
         }
     }
 }
