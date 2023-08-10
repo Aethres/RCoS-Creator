@@ -58,11 +58,6 @@ namespace WindowsFormsApp1
             File.WriteAllText($".\\RCosHelper\\rcos.h", rcosHelper(processList, Resources.tempRCoS_h));
         }
 
-        //public static string generateRCoS_CH()
-        //{
-        //    return rcosHelper(processList);
-        //}
-
         public static string rcosHelper(List<Process> processes, string template)
         {
             StringBuilder sb = new StringBuilder(template);

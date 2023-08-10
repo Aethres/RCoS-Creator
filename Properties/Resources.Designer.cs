@@ -61,6 +61,16 @@ namespace WindowsFormsApp1.Properties {
         }
         
         /// <summary>
+        ///   System.Byte[] türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static byte[] Arcelik_RCoS_v6 {
+            get {
+                object obj = ResourceManager.GetObject("Arcelik_RCoS_v6", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   (Simge) öğesine benzeyen System.Drawing.Icon türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
         internal static System.Drawing.Icon RCoSIcon {

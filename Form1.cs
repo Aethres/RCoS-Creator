@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         List<Process> processList;
         Process process;
         ProcessConfig processConfig;
+        string file;
 
         private const string DEBUG_LOST_FOCUS_TEXT = "Use \",\" for multiple entries";
         public Form1(List<Process> processList)
@@ -28,6 +29,7 @@ namespace WindowsFormsApp1
 
             this.processList = processList;
             AutoScroll = true;
+            file = Path.GetTempFileName() + ".pdf";
 
             InitializeComponent();
             ComponentLocker();
@@ -42,6 +44,14 @@ namespace WindowsFormsApp1
             }
 
             versionToolStripMenuItem1.Text = "v" + Program.APP_VERSION;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            File.Delete(file);
+            File.Delete(file.Substring(0,file.Length - 4 ));
         }
 
         private void debugPortsBehavior()
@@ -342,6 +352,17 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.platformIndex = comboBox1.SelectedIndex;
+        }
+
+        private void test1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            File.WriteAllBytes(file, Properties.Resources.Arcelik_RCoS_v6);
+            System.Diagnostics.Process.Start(file);
+        }
+
+        private void rCoSSiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.rcossdk.com");
         }
     }
 }

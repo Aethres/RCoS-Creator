@@ -131,6 +131,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Content Include="RCosIcon.ico" />
+    <None Include="Resources\Arcelik_RCoS_v6.pdf" />
     <None Include="Resources\RCoSIcon.ico" />
     <Content Include="Templates\tempRCoS_c.txt" />
     <Content Include="Templates\tempRCoS_h.txt" />

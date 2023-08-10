@@ -53,12 +53,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test1ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.test2ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.test3ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +68,7 @@
             this.versionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.rCoSSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventsCount)).BeginInit();
@@ -94,9 +94,9 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
+            this.button1.BackColor = System.Drawing.Color.DimGray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(466, 315);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(300, 50);
@@ -282,7 +282,7 @@
             // debugPortsLabel
             // 
             this.debugPortsLabel.AutoSize = true;
-            this.debugPortsLabel.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.debugPortsLabel.BackColor = System.Drawing.Color.Gray;
             this.debugPortsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.debugPortsLabel.Location = new System.Drawing.Point(305, 252);
             this.debugPortsLabel.Name = "debugPortsLabel";
@@ -303,7 +303,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label1.BackColor = System.Drawing.Color.Gray;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(305, 210);
             this.label1.Name = "label1";
@@ -314,7 +314,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label2.BackColor = System.Drawing.Color.Gray;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(305, 38);
             this.label2.Name = "label2";
@@ -325,7 +325,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label3.BackColor = System.Drawing.Color.Gray;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(305, 76);
             this.label3.Name = "label3";
@@ -340,41 +340,34 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
             this.openToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.rCoSSiteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(861, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(861, 28);
             this.menuStrip1.TabIndex = 40;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importToolStripMenuItem,
             this.exportToolStripMenuItem,
             this.test3ToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
             this.saveToolStripMenuItem.Text = "Save";
             // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
-            this.importToolStripMenuItem.Text = "Import";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // test3ToolStripMenuItem
             // 
             this.test3ToolStripMenuItem.Name = "test3ToolStripMenuItem";
-            this.test3ToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+            this.test3ToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.test3ToolStripMenuItem.Text = "Test3";
             this.test3ToolStripMenuItem.Click += new System.EventHandler(this.test3ToolStripMenuItem_Click);
             // 
@@ -382,7 +375,7 @@
             // 
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.test1ToolStripMenuItem2,
-            this.test2ToolStripMenuItem2,
+            this.importToolStripMenuItem2,
             this.test3ToolStripMenuItem2});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
@@ -391,19 +384,20 @@
             // test1ToolStripMenuItem2
             // 
             this.test1ToolStripMenuItem2.Name = "test1ToolStripMenuItem2";
-            this.test1ToolStripMenuItem2.Size = new System.Drawing.Size(126, 26);
-            this.test1ToolStripMenuItem2.Text = "Test1";
+            this.test1ToolStripMenuItem2.Size = new System.Drawing.Size(137, 26);
+            this.test1ToolStripMenuItem2.Text = "Import";
+            this.test1ToolStripMenuItem2.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
-            // test2ToolStripMenuItem2
+            // importToolStripMenuItem2
             // 
-            this.test2ToolStripMenuItem2.Name = "test2ToolStripMenuItem2";
-            this.test2ToolStripMenuItem2.Size = new System.Drawing.Size(126, 26);
-            this.test2ToolStripMenuItem2.Text = "Test2";
+            this.importToolStripMenuItem2.Name = "importToolStripMenuItem2";
+            this.importToolStripMenuItem2.Size = new System.Drawing.Size(137, 26);
+            this.importToolStripMenuItem2.Text = "Test2";
             // 
             // test3ToolStripMenuItem2
             // 
             this.test3ToolStripMenuItem2.Name = "test3ToolStripMenuItem2";
-            this.test3ToolStripMenuItem2.Size = new System.Drawing.Size(126, 26);
+            this.test3ToolStripMenuItem2.Size = new System.Drawing.Size(137, 26);
             this.test3ToolStripMenuItem2.Text = "Test3";
             // 
             // helpToolStripMenuItem
@@ -421,6 +415,7 @@
             this.test1ToolStripMenuItem1.Name = "test1ToolStripMenuItem1";
             this.test1ToolStripMenuItem1.Size = new System.Drawing.Size(163, 26);
             this.test1ToolStripMenuItem1.Text = "RCoS Help";
+            this.test1ToolStripMenuItem1.Click += new System.EventHandler(this.test1ToolStripMenuItem1_Click);
             // 
             // test2ToolStripMenuItem1
             // 
@@ -472,13 +467,21 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Location = new System.Drawing.Point(302, 31);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(511, 342);
             this.pictureBox2.TabIndex = 42;
             this.pictureBox2.TabStop = false;
+            // 
+            // rCoSSiteToolStripMenuItem
+            // 
+            this.rCoSSiteToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.rCoSSiteToolStripMenuItem.Name = "rCoSSiteToolStripMenuItem";
+            this.rCoSSiteToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.rCoSSiteToolStripMenuItem.Text = "rcossdk.com";
+            this.rCoSSiteToolStripMenuItem.Click += new System.EventHandler(this.rCoSSiteToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -555,7 +558,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem1;
@@ -563,7 +565,7 @@
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem madeByToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emreKarabekToolStripMenuItem;
@@ -571,6 +573,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem rCoSSiteToolStripMenuItem;
     }
 }
 
