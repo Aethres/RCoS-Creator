@@ -20,16 +20,48 @@ namespace WindowsFormsApp1
         List<Process> processList;
         Process process;
         ProcessConfig processConfig;
+
+        private const string DEBUG_LOST_FOCUS_TEXT = "Use \",\" for multiple entries";
         public Form1(List<Process> processList)
         {
-            Icon = Properties.Resources.RCosIcon;
+            Icon = Resources.RCoSIcon;
 
             this.processList = processList;
             AutoScroll = true;
 
             InitializeComponent();
             ComponentLocker();
+            UpdateProcessConfig();
+            debugPortsBehavior();
+            pictureBox1.SendToBack();
+            pictureBox2.SendToBack();
+
+            foreach (var item in Program.platformNames)
+            {
+                comboBox1.Items.Add(item);
+            }
+
             versionToolStripMenuItem1.Text = "v" + Program.APP_VERSION;
+        }
+
+        private void debugPortsBehavior()
+        {
+            debugPorts.GotFocus += (bs, be) =>
+            {
+                if (debugPorts.Text == DEBUG_LOST_FOCUS_TEXT)
+                {
+                    debugPorts.Text = "";
+                    debugPorts.ForeColor = Color.Black;
+                }
+            };
+            debugPorts.LostFocus += (bs, be) =>
+            {
+                if (debugPorts.Text == "")
+                {
+                    debugPorts.Text = DEBUG_LOST_FOCUS_TEXT;
+                    debugPorts.ForeColor = Color.Gray;
+                }
+            };
         }
 
         private void UpdateProcessConfig()
@@ -44,7 +76,7 @@ namespace WindowsFormsApp1
 
                 processConfig = new ProcessConfig(process);
                 processConfig.AutoScroll = true;
-                processConfig.Location = new Point(30, 300);
+                processConfig.Location = new Point(21, 300);
                 processConfig.Show();
 
                 this.Controls.Add(processConfig);
@@ -55,8 +87,11 @@ namespace WindowsFormsApp1
             }
             else
             {
-                processConfig.Location = new Point(660, 520);
-                processConfig.Hide();
+                processConfig = new ProcessConfig(process);
+                processConfig.AutoScroll = true;
+                processConfig.Location = new Point(21, 300);
+                processConfig.Show();
+                this.Controls.Add(processConfig);
             }
         }
 
@@ -64,28 +99,28 @@ namespace WindowsFormsApp1
         {
             if (process == null)
             {
-                numericUpDown2.ReadOnly = true;
-                eventsCount.ReadOnly = true;
-                timerEventsCount.ReadOnly = true;
-                devIOCount.ReadOnly = true;
-                devComCount.ReadOnly = true;
-                debugName.ReadOnly = true;
-                author.ReadOnly = true;
-                description.ReadOnly = true;
-                debugPorts.ReadOnly = true;
+                numericUpDown2.Enabled = false;
+                eventsCount.Enabled = false;
+                timerEventsCount.Enabled = false;
+                devIOCount.Enabled = false;
+                devComCount.Enabled = false;
+                debugName.Enabled = false;
+                author.Enabled = false;
+                description.Enabled = false;
+                debugPorts.Enabled = false;
                 resetButton.Enabled = false;
             }
             else
             {
-                numericUpDown2.ReadOnly = false;
-                eventsCount.ReadOnly = false;
-                timerEventsCount.ReadOnly = false;
-                devIOCount.ReadOnly = false;
-                devComCount.ReadOnly = false;
-                debugName.ReadOnly = false;
-                author.ReadOnly = false;
-                description.ReadOnly = false;
-                debugPorts.ReadOnly = false;
+                numericUpDown2.Enabled = true;
+                eventsCount.Enabled = true;
+                timerEventsCount.Enabled = true;
+                devIOCount.Enabled = true;
+                devComCount.Enabled = true;
+                debugName.Enabled = true;
+                author.Enabled = true;
+                description.Enabled = true;
+                debugPorts.Enabled = true;
                 resetButton.Enabled = true;
             }
         }
@@ -119,7 +154,7 @@ namespace WindowsFormsApp1
                 {
                     if (item.Description == "")
                     {
-                        item.Description = description.Text;
+                        item.Description = earlierDesc;
                     }
                     earlierDesc = item.Description;
 
@@ -156,7 +191,7 @@ namespace WindowsFormsApp1
                 debugName.Text = "";
                 description.Text = "";
                 author.Text = "";
-                debugPorts.Text = "";
+                debugPorts.Text = DEBUG_LOST_FOCUS_TEXT;
 
             }
             else
@@ -168,7 +203,8 @@ namespace WindowsFormsApp1
                 debugName.Text = process.DebugName;
                 description.Text = process.Description;
                 author.Text = process.Author;
-                debugPorts.Text = process.DebugPorts;
+                debugPorts.Text = process.DebugPorts == DEBUG_LOST_FOCUS_TEXT || process.DebugPorts ==  "" ?
+                                   DEBUG_LOST_FOCUS_TEXT : process.DebugPorts;
             }
             ComponentLocker();
             UpdateProcessConfig();
@@ -243,7 +279,16 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                process.DebugPorts = debugPorts.Text;
+                process.DebugPorts = debugPorts.Text == DEBUG_LOST_FOCUS_TEXT || debugPorts.Text == "" ?
+                                   "" : debugPorts.Text;
+            }
+            if (debugPorts.Text == DEBUG_LOST_FOCUS_TEXT)
+            {
+                debugPorts.ForeColor = Color.Gray;
+            }
+            else
+            {
+                debugPorts.ForeColor = Color.Black;
             }
         }
 
@@ -260,7 +305,7 @@ namespace WindowsFormsApp1
                     process.resetProcess();
                     debugName.Text = "";
                     description.Text = "";
-                    debugPorts.Text = "";
+                    debugPorts.Text = DEBUG_LOST_FOCUS_TEXT;
                     timerEventsCount.Value = 0;
                     eventsCount.Value = 0;
                     devIOCount.Value = 0;
@@ -271,7 +316,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string str = File.ReadAllText(Path.GetFullPath($".\\app\\Asd.json"));
             processList = JsonConvert.DeserializeObject<List<Process>>(str);
@@ -280,10 +325,23 @@ namespace WindowsFormsApp1
             numericUpDown2_ValueChanged(sender, e);
         }
 
-        private void test2ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string jsonString = JsonConvert.SerializeObject(processList);
-            File.WriteAllText($".\\app\\Asd.json", jsonString);
+            if (processList.Any())
+            {
+                string jsonString = JsonConvert.SerializeObject(processList);
+                File.WriteAllText($".\\app\\Asd.json", jsonString);
+            }
+        }
+
+        private void test3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program.platformIndex = comboBox1.SelectedIndex;
         }
     }
 }

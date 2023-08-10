@@ -54,27 +54,27 @@ namespace WindowsFormsApp1
         public string ProcessName { get => processName; set => processName = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
         [JsonProperty]
-        internal List<ProcessItem> Events { get => events; set => events = value; }
+        public List<ProcessItem> Events { get => events; set => events = value; }
         [JsonProperty]
-        internal List<ProcessItem> TimerEvents { get => timerEvents; set => timerEvents = value; }
+        public List<ProcessItem> TimerEvents { get => timerEvents; set => timerEvents = value; }
         [JsonProperty]
-        internal List<ProcessItem> DevIO { get => devIO; set => devIO = value; }
+        public List<ProcessItem> DevIO { get => devIO; set => devIO = value; }
         [JsonProperty]
-        internal List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
+        public List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
 
         public void generateFiles()
         {
             System.IO.Directory.CreateDirectory("app");
 
-            File.WriteAllText($".\\app\\{ProcessName.ToLower()}.c", replace(Resources.tempApp_c));
-            File.WriteAllText($".\\app\\{ProcessName.ToLower()}.h", replace(Resources.tempApp_h));
+            File.WriteAllText($".\\app\\{ProcessName.ToLowerInvariant()}.c", replace(Resources.tempApp_c));
+            File.WriteAllText($".\\app\\{ProcessName.ToLowerInvariant()}.h", replace(Resources.tempApp_h));
 
         }
 
         public string replace(string template)
         {
             StringBuilder sb = new StringBuilder(template);
-            sb.Replace("%FILENAMELC%", ProcessName.ToLower());
+            sb.Replace("%FILENAMELC%", ProcessName.ToLowerInvariant());
             sb.Replace("%FILENAMEUC%", ProcessName.ToUpperInvariant());
             sb.Replace("%DEBUG_NAME%", DebugName);
             sb.Replace("%DEBUG_PORTS%", constructDebugPorts());
@@ -119,21 +119,6 @@ namespace WindowsFormsApp1
             }
 
             return "";
-        }
-
-        public static string rcosHelper(List<Process> processes)
-        {
-            string str = "//Will be written in RcosmainLoop\n";
-            str += "//start processes\n";
-            foreach (var item in processes)
-            {
-                if (item.isActive)
-                {
-                    str += $"processStart(&{item.processName})\n";
-                }
-            }
-
-            return str;
         }
 
         public void resetProcess()

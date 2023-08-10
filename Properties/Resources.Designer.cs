@@ -63,9 +63,9 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   (Simge) öğesine benzeyen System.Drawing.Icon türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Icon RCosIcon {
+        internal static System.Drawing.Icon RCoSIcon {
             get {
-                object obj = ResourceManager.GetObject("RCosIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("RCoSIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -105,6 +105,49 @@ namespace WindowsFormsApp1.Properties {
         internal static string tempApp_h {
             get {
                 return ResourceManager.GetString("tempApp_h", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   /** @file       rcos.c
+        /// *  @brief      RCoS+ main file
+        /// *  @copyright  (c) %YEAR%-Arcelik - All Rights Reserved
+        /// *              Permission to use, reproduce, copy, prepare derivative works,
+        /// *              modify, distribute, perform, display or sell this software and/or
+        /// *              its documentation for any purpose is prohibited without the express
+        /// *              written consent of Arcelik A.S.
+        /// *  @author     %AUTHOR%
+        /// *  @date       %DATE%
+        /// */
+        ///#define FILE_RCOS_C
+        ///
+        ///#include &quot;rcos.h&quot;
+        ///
+        ///#d [dizenin kalan bölümü kesildi]&quot;; benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string tempRCoS_c {
+            get {
+                return ResourceManager.GetString("tempRCoS_c", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   /** @file       rcos.h
+        /// *  @brief      RCoS+ configuration file
+        /// *  @copyright  (c) %YEAR%-Arcelik - All Rights Reserved
+        /// *              Permission to use, reproduce, copy, prepare derivative works,
+        /// *              modify, distribute, perform, display or sell this software and/or
+        /// *              its documentation for any purpose is prohibited without the express
+        /// *              written consent of Arcelik A.S.
+        /// *  @author     %AUTHOR%
+        /// *  @date       %DATE%
+        /// */
+        ///#ifndef FILE_RCOS_H
+        ///#define FILE_RCO [dizenin kalan bölümü kesildi]&quot;; benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string tempRCoS_h {
+            get {
+                return ResourceManager.GetString("tempRCoS_h", resourceCulture);
             }
         }
     }

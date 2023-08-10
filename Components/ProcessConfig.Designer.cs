@@ -42,14 +42,15 @@
             this.processName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.processName.TextChanged += new System.EventHandler(this.processName_TextChanged);
             // 
-            // ProcessWindow
+            // ProcessConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.processName);
-            this.Name = "ProcessWindow";
-            this.Text = "ProcessWindow";
+            this.Name = "ProcessConfig";
+            this.Size = new System.Drawing.Size(785, 448);
             this.ResumeLayout(false);
             this.PerformLayout();
 

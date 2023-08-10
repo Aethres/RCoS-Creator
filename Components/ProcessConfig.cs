@@ -17,14 +17,23 @@ namespace WindowsFormsApp1
         private Process process;
         private List<TextBoxR> textBoxes;
         private Point point;
+
         public ProcessConfig(Process process)
         {
             InitializeComponent();
-            this.process = process;
-            processName.Text = process.ProcessName;
-            textBoxes = new List<TextBoxR>();
-            point = new Point(0, 20);
-            addComponents();
+            if (process != null)
+            {
+                this.process = process;
+                processName.Text = process.ProcessName;
+                textBoxes = new List<TextBoxR>();
+                point = new Point(20, 20);
+                addComponents();
+            }
+            else
+            {
+                processName.Hide();
+            }
+
         }
 
         private void addComponents()
@@ -64,7 +73,10 @@ namespace WindowsFormsApp1
 
         private void processName_TextChanged(object sender, EventArgs e)
         {
-            process.ProcessName = processName.Text;
+            if (process != null)
+            {
+                process.ProcessName = processName.Text;
+            }
         }
     }
 }
