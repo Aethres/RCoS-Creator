@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.FileGenerators;
+using WindowsFormsApp1.FileOperations;
 using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
@@ -39,23 +41,26 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Form1 form = new Form1(processList);
-            form.Text = "RCoS+ Creator";
+            CreatorWindow creatorWindow = new CreatorWindow(processList);
+            creatorWindow.Text = "RCoS+ Creator";
 
-            Application.Run(form);
+            Application.Run(creatorWindow);
         }
-        public static void generateFiles()
+
+        public static void generateFiles(string path)
         {
             foreach (var item in processList)
             {
                 if (item.IsActive)
                 {
-                    item.generateFiles();
+                    item.generateFiles(path);
                 }
             }
-            System.IO.Directory.CreateDirectory("RCosHelper");
-            File.WriteAllText($".\\RCosHelper\\rcos.c", rcosHelper(processList, Resources.tempRCoS_c));
-            File.WriteAllText($".\\RCosHelper\\rcos.h", rcosHelper(processList, Resources.tempRCoS_h));
+            string rCoSHelperPath = $"{path}\\RCoSHelper";
+            System.IO.Directory.CreateDirectory(rCoSHelperPath);
+            File.WriteAllText($"{rCoSHelperPath}\\rcos.c", rcosHelper(processList, Resources.tempRCoS_c));
+            File.WriteAllText($"{rCoSHelperPath}\\rcos.h", rcosHelper(processList, Resources.tempRCoS_h));
+            SaveManager.ExportFiles($"{rCoSHelperPath}\\AutoExport.json", processList);
         }
 
         public static string rcosHelper(List<Process> processes, string template)

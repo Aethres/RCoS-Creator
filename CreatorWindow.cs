@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Ookii.Dialogs.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,25 +12,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApp1.FileOperations;
 using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class CreatorWindow : Form
     {
         List<Process> processList;
         Process process;
         ProcessConfig processConfig;
-        string file;
 
         private const string DEBUG_LOST_FOCUS_TEXT = "Use \",\" for multiple entries";
-        public Form1(List<Process> processList)
+        public CreatorWindow(List<Process> processList)
         {
             Icon = Resources.RCoSIcon;
 
             this.processList = processList;
             AutoScroll = true;
-            file = Path.GetTempFileName() + ".pdf";
 
             InitializeComponent();
             ComponentLocker();
@@ -44,14 +44,6 @@ namespace WindowsFormsApp1
             }
 
             versionToolStripMenuItem1.Text = "v" + Program.APP_VERSION;
-        }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-
-            File.Delete(file);
-            File.Delete(file.Substring(0,file.Length - 4 ));
         }
 
         private void debugPortsBehavior()
@@ -137,7 +129,13 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.generateFiles();
+            VistaFolderBrowserDialog sf = new VistaFolderBrowserDialog();
+
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                Program.generateFiles(sf.SelectedPath);
+            }
+
         }
 
 
@@ -328,19 +326,37 @@ namespace WindowsFormsApp1
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string str = File.ReadAllText(Path.GetFullPath($".\\app\\Asd.json"));
-            processList = JsonConvert.DeserializeObject<List<Process>>(str);
-            process = null;
-            numericUpDown1.Value = processList.Count;
-            numericUpDown2_ValueChanged(sender, e);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string file = openFileDialog.FileName;
+                try
+                {
+                    processList = SaveManager.ImportFiles(file, processList);
+                    process = null;
+                    numericUpDown1.Value = processList.Count;
+                    numericUpDown2_ValueChanged(sender, e);
+                }
+                catch (IOException)
+                {
+                }
+            }
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (processList.Any())
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+            saveFileDialog.DefaultExt = "json";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string jsonString = JsonConvert.SerializeObject(processList);
-                File.WriteAllText($".\\app\\Asd.json", jsonString);
+                SaveManager.ExportFiles(saveFileDialog.FileName, processList);
             }
         }
 
@@ -356,6 +372,8 @@ namespace WindowsFormsApp1
 
         private void test1ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+
+            string file = ".\\Arcelik_RCoS_v6.pdf";
             File.WriteAllBytes(file, Properties.Resources.Arcelik_RCoS_v6);
             System.Diagnostics.Process.Start(file);
         }

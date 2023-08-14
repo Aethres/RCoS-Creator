@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class CreatorWindow
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -66,9 +66,9 @@
             this.emreKarabekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çağrıHocaoğluToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rCoSSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.rCoSSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventsCount)).BeginInit();
@@ -453,7 +453,15 @@
             this.versionToolStripMenuItem1.Enabled = false;
             this.versionToolStripMenuItem1.Name = "versionToolStripMenuItem1";
             this.versionToolStripMenuItem1.Size = new System.Drawing.Size(163, 26);
-            this.versionToolStripMenuItem1.Text = "V. 1.0";
+            this.versionToolStripMenuItem1.Text = "version";
+            // 
+            // rCoSSiteToolStripMenuItem
+            // 
+            this.rCoSSiteToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.rCoSSiteToolStripMenuItem.Name = "rCoSSiteToolStripMenuItem";
+            this.rCoSSiteToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.rCoSSiteToolStripMenuItem.Text = "rcossdk.com";
+            this.rCoSSiteToolStripMenuItem.Click += new System.EventHandler(this.rCoSSiteToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -475,15 +483,7 @@
             this.pictureBox2.TabIndex = 42;
             this.pictureBox2.TabStop = false;
             // 
-            // rCoSSiteToolStripMenuItem
-            // 
-            this.rCoSSiteToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.rCoSSiteToolStripMenuItem.Name = "rCoSSiteToolStripMenuItem";
-            this.rCoSSiteToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
-            this.rCoSSiteToolStripMenuItem.Text = "rcossdk.com";
-            this.rCoSSiteToolStripMenuItem.Click += new System.EventHandler(this.rCoSSiteToolStripMenuItem_Click);
-            // 
-            // Form1
+            // CreatorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -515,8 +515,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "CreatorWindow";
+            this.Text = "RCoS+ Creator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventsCount)).EndInit();

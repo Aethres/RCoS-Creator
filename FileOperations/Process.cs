@@ -26,10 +26,12 @@ namespace WindowsFormsApp1
         List<ProcessItem> timerEvents;
         List<ProcessItem> devIO;
         List<ProcessItem> devCom;
+        static Dictionary<string, int> itemDict;
 
         public Process()
         {
         }
+
         public Process(string processName, List<Process> processList)
         {
             ProcessName = processName;
@@ -43,6 +45,7 @@ namespace WindowsFormsApp1
             author = "";
             debugName = "";
             debugPorts = "";
+            itemDict = new Dictionary<string, int>();
         }
 
         [JsonIgnore]
@@ -62,13 +65,13 @@ namespace WindowsFormsApp1
         [JsonProperty]
         public List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
 
-        public void generateFiles()
+        public void generateFiles(string path)
         {
-            System.IO.Directory.CreateDirectory("app");
+            string appPath = path + "\\app";
+            System.IO.Directory.CreateDirectory(appPath);
 
-            File.WriteAllText($".\\app\\{ProcessName.ToLowerInvariant()}.c", replace(Resources.tempApp_c));
-            File.WriteAllText($".\\app\\{ProcessName.ToLowerInvariant()}.h", replace(Resources.tempApp_h));
-
+            File.WriteAllText($"{appPath}\\{ProcessName.ToLowerInvariant()}.c", replace(Resources.tempApp_c));
+            File.WriteAllText($"{appPath}\\{ProcessName.ToLowerInvariant()}.h", replace(Resources.tempApp_h));
         }
 
         public string replace(string template)
@@ -172,9 +175,18 @@ namespace WindowsFormsApp1
             }
             else if (list.Count < count)
             {
+                if (itemDict.ContainsKey(name))
+                {
+                    itemDict[name]++;
+                }
+                else
+                {
+                    itemDict.Add(name, 1);
+                }
+
                 for (int i = 0; i < diff; i++)
                 {
-                    list.Add(new ProcessItem(name + (list.Count + 1).ToString()));
+                    list.Add(new ProcessItem(name + (itemDict[name]).ToString()));
                 }
             }
 
