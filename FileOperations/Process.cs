@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
         List<ProcessItem> timerEvents;
         List<ProcessItem> devIO;
         List<ProcessItem> devCom;
-        static Dictionary<string, int> itemDict;
+        static Dictionary<string, int> itemDict= new Dictionary<string, int>();
 
         public Process()
         {
@@ -45,7 +45,6 @@ namespace WindowsFormsApp1
             author = "";
             debugName = "";
             debugPorts = "";
-            itemDict = new Dictionary<string, int>();
         }
 
         [JsonIgnore]
@@ -64,6 +63,8 @@ namespace WindowsFormsApp1
         public List<ProcessItem> DevIO { get => devIO; set => devIO = value; }
         [JsonProperty]
         public List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
+        [JsonProperty]
+        public static Dictionary<string, int> ItemDict { get => itemDict; set => itemDict = value; }
 
         public void generateFiles(string path)
         {
@@ -89,17 +90,61 @@ namespace WindowsFormsApp1
             sb.Replace("%DATE%", DateTime.Today.ToString("d/MM/yyyy"));
 
             //header only
+            sb.Replace("%EVENTS%", arrangeText(1, events));
+            sb.Replace("%TIMER_EVENTS%", arrangeText(1, timerEvents));
+            sb.Replace("%TIMER_EVENTS_PARAMETERS%", arrangeText(2, timerEvents));
+            sb.Replace("%TIMER_EVENTS_INIT%", arrangeText(3, timerEvents));
+            sb.Replace("%DEVIO%", arrangeText(4, devIO));
+            sb.Replace("%DEVCOM%", arrangeText(5, devCom));
+            sb.Replace("%DEVIO_FUNC_PARAMS%", arrangeText(6, devIO));
+            sb.Replace("%DEVCOM_FUNC_PARAMS%", arrangeText(6, devCom));
+            sb.Replace("%DEVIO_INIT%", arrangeText(8, devIO));
+            sb.Replace("%DEVCOM_INIT%", arrangeText(8, devCom));
+
+            return sb.ToString();
+        }
+
+        public static string arrangeText(int index, List<ProcessItem> list)
+        {
             string str = string.Empty;
-            foreach (var item in events)
+            foreach (var item in list)
             {
                 if (item.IsActive)
                 {
-                    str += $"\n\t{item.Name},";
+                    switch (index)
+                    {
+                        case 1:
+                            str += $"\n\te{item.Name},";
+                            break;
+                        case 2:
+                            str += $"\n\ttsTimerEvent {item.Name}Timer,";
+                            break;
+                        case 3:
+                            str += $"\\\n\t .{item.Name}Timer =" +
+                                $" TIMER_EVENT_INIT(_enum, _enum, e{item.Name}),";
+                            break;
+                        case 4:
+                            str += $"\n\t const tsDevIo *{item.Name},";
+                            break;
+                        case 5:
+                            str += $"\n\t const tsDevCom *{item.Name},";
+                            break;
+                        case 6:
+                            str += $", _{item.Name}";
+                            break;
+                        case 7:
+                            str += $", {item.Name}";
+                            break;
+                        case 8:
+                            str += $"\\\n\t .{item.Name} = &_{item.Name},";
+                            break;
+                        default:
+                            break;
+                    }
+                    
                 }
             }
-            sb.Replace("%EVENTS%", str);
-
-            return sb.ToString();
+            return str;
         }
 
         private string constructDebugPorts()
@@ -175,18 +220,18 @@ namespace WindowsFormsApp1
             }
             else if (list.Count < count)
             {
-                if (itemDict.ContainsKey(name))
+                if (ItemDict.ContainsKey(name))
                 {
-                    itemDict[name]++;
+                    ItemDict[name]++;
                 }
                 else
                 {
-                    itemDict.Add(name, 1);
+                    ItemDict.Add(name, 1);
                 }
 
                 for (int i = 0; i < diff; i++)
                 {
-                    list.Add(new ProcessItem(name + (itemDict[name]).ToString()));
+                    list.Add(new ProcessItem(name + (ItemDict[name]).ToString()));
                 }
             }
 

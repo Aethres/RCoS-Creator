@@ -233,7 +233,7 @@ namespace WindowsFormsApp1
         {
             if (process != null)
             {
-                Process.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "Timer Event");
+                Process.listUpdate(process.TimerEvents, (int)timerEventsCount.Value, "TimerEvent");
             }
             UpdateProcessConfig();
         }

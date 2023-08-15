@@ -31,30 +31,30 @@
 
 /// @brief  Events of a %APPNAMEPC% process
 typedef enum
-{%EVENTS%
+{%EVENTS%%TIMER_EVENTS%
 } te%APPNAMEPC%Events;
 
 /// @brief  Parameters of a %APPNAMEPC% process
 typedef struct
-{
+{%TIMER_EVENTS_PARAMETERS%
 } ts%APPNAMEPC%Params;
 
 /// @brief  Constants of a %APPNAMEPC% process
 typedef struct
-{
+{%DEVIO%%DEVCOM%
 } ts%APPNAMEPC%Consts;
 
 /** @brief  %APPNAMEPC% process object creation macro
  *  @param  _name   Name of process object
  *  @param  _enum   Process enumeration for this object
  */
-#define PROCESS_%FILENAMEUC%_CREATE(_name, _enum) \
+#define PROCESS_%FILENAMEUC%_CREATE(_name, _enum%DEVIO_FUNC_PARAMS%%DEVCOM_FUNC_PARAMS%) \
     ts%APPNAMEPC%Params _name##Params =           \
-        {                                         \
+        {                                         %TIMER_EVENTS_INIT%\
         /* DONT FORGET TO FILL INITAL VALUES */   \
     };                                            \
     const ts%APPNAMEPC%Consts _name##Consts =     \
-        {                                         \
+        {                                         %DEVIO_INIT%%DEVCOM_INIT%\
         /* DONT FORGET TO FILL INITAL VALUES */   \
     };                                            \
     PROCESS_CREATE(_name, %APPNAME%Init, %APPNAME%Deinit, _enum, &_name##Params, &_name##Consts)

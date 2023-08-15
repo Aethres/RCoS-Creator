@@ -58,22 +58,24 @@ namespace WindowsFormsApp1
             }
             string rCoSHelperPath = $"{path}\\RCoSHelper";
             System.IO.Directory.CreateDirectory(rCoSHelperPath);
-            File.WriteAllText($"{rCoSHelperPath}\\rcos.c", rcosHelper(processList, Resources.tempRCoS_c));
-            File.WriteAllText($"{rCoSHelperPath}\\rcos.h", rcosHelper(processList, Resources.tempRCoS_h));
+            File.WriteAllText($"{rCoSHelperPath}\\rcos.c", RCoSHelper(processList, Resources.tempRCoS_c));
+            File.WriteAllText($"{rCoSHelperPath}\\rcos.h", RCoSHelper(processList, Resources.tempRCoS_h));
             SaveManager.ExportFiles($"{rCoSHelperPath}\\AutoExport.json", processList);
         }
 
-        public static string rcosHelper(List<Process> processes, string template)
+        public static string RCoSHelper(List<Process> processList, string template)
         {
             StringBuilder sb = new StringBuilder(template);
             string processCreate = "";
             string processStart = "";
 
-            foreach (var item in processes)
+            foreach (var item in processList)
             {
                 if (item.IsActive)
                 {
-                    processCreate += $"PROCESS_UI_CREATE({item.ProcessName}, e{item.ProcessName})\n";
+                    processCreate += $"PROCESS_UI_CREATE({item.ProcessName}, " +
+                        $"e{item.ProcessName}{Process.arrangeText(7, item.DevIO)}" +
+                        $"{Process.arrangeText(7, item.DevCom)})\n";
                     processStart += $"\tprocessStart(&{item.ProcessName})\n";
                 }
             }
@@ -91,9 +93,9 @@ namespace WindowsFormsApp1
             sb.Replace("%PROCESS_CREATE%", processCreate);
             sb.Replace("%PROCESS_START%", processStart);
 
-            if (processes.Any())
+            if (processList.Any())
             {
-                sb.Replace("%AUTHOR%", processes.First().Author);
+                sb.Replace("%AUTHOR%", processList.First().Author);
             }
             sb.Replace("%DATE%", DateTime.Today.ToString("d/MM/yyyy"));
 
