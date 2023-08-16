@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.FileGenerators;
 using WindowsFormsApp1.FileOperations;
 using WindowsFormsApp1.Properties;
+using static WindowsFormsApp1.Process;
 
 namespace WindowsFormsApp1
 {
@@ -74,8 +75,8 @@ namespace WindowsFormsApp1
                 if (item.IsActive)
                 {
                     processCreate += $"PROCESS_UI_CREATE({item.ProcessName}, " +
-                        $"e{item.ProcessName}{Process.arrangeText(7, item.DevIO)}" +
-                        $"{Process.arrangeText(7, item.DevCom)})\n";
+                        $"e{item.ProcessName}{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevIO)}" +
+                        $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevCom)})\n";
                     processStart += $"\tprocessStart(&{item.ProcessName})\n";
                 }
             }

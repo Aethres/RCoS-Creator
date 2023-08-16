@@ -27,6 +27,18 @@ namespace WindowsFormsApp1
         List<ProcessItem> devIO;
         List<ProcessItem> devCom;
         static Dictionary<string, int> itemDict= new Dictionary<string, int>();
+        public enum TextType
+        {
+            EVENTS,
+            TIMER_EVENTS_PARAMS,
+            TIMER_EVENTS_INIT,
+            DEVIO_CONSTS,
+            DEVCOM_CONSTS,
+            FUNC_PARAMS,
+            FUNC_CREATE_PARAMS,
+            PARAMS_INIT,
+        }
+        
 
         public Process()
         {
@@ -90,52 +102,52 @@ namespace WindowsFormsApp1
             sb.Replace("%DATE%", DateTime.Today.ToString("d/MM/yyyy"));
 
             //header only
-            sb.Replace("%EVENTS%", arrangeText(1, events));
-            sb.Replace("%TIMER_EVENTS%", arrangeText(1, timerEvents));
-            sb.Replace("%TIMER_EVENTS_PARAMETERS%", arrangeText(2, timerEvents));
-            sb.Replace("%TIMER_EVENTS_INIT%", arrangeText(3, timerEvents));
-            sb.Replace("%DEVIO%", arrangeText(4, devIO));
-            sb.Replace("%DEVCOM%", arrangeText(5, devCom));
-            sb.Replace("%DEVIO_FUNC_PARAMS%", arrangeText(6, devIO));
-            sb.Replace("%DEVCOM_FUNC_PARAMS%", arrangeText(6, devCom));
-            sb.Replace("%DEVIO_INIT%", arrangeText(8, devIO));
-            sb.Replace("%DEVCOM_INIT%", arrangeText(8, devCom));
+            sb.Replace("%EVENTS%", arrangeText(TextType.EVENTS, events));
+            sb.Replace("%TIMER_EVENTS%", arrangeText(TextType.EVENTS, timerEvents));
+            sb.Replace("%TIMER_EVENTS_PARAMETERS%", arrangeText(TextType.TIMER_EVENTS_PARAMS, timerEvents));
+            sb.Replace("%TIMER_EVENTS_INIT%", arrangeText(TextType.TIMER_EVENTS_INIT, timerEvents));
+            sb.Replace("%DEVIO%", arrangeText(TextType.DEVIO_CONSTS, devIO));
+            sb.Replace("%DEVCOM%", arrangeText(TextType.DEVCOM_CONSTS, devCom));
+            sb.Replace("%DEVIO_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devIO));
+            sb.Replace("%DEVCOM_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devCom));
+            sb.Replace("%DEVIO_INIT%", arrangeText(TextType.PARAMS_INIT, devIO));
+            sb.Replace("%DEVCOM_INIT%", arrangeText(TextType.PARAMS_INIT, devCom));
 
             return sb.ToString();
         }
 
-        public static string arrangeText(int index, List<ProcessItem> list)
+        public static string arrangeText(TextType textType, List<ProcessItem> list)
         {
             string str = string.Empty;
             foreach (var item in list)
             {
                 if (item.IsActive)
                 {
-                    switch (index)
+                    switch (textType)
                     {
-                        case 1:
+                        case TextType.EVENTS:
                             str += $"\n\te{item.Name},";
                             break;
-                        case 2:
+                        case TextType.TIMER_EVENTS_PARAMS:
                             str += $"\n\ttsTimerEvent {item.Name}Timer,";
                             break;
-                        case 3:
+                        case TextType.TIMER_EVENTS_INIT:
                             str += $"\\\n\t .{item.Name}Timer =" +
                                 $" TIMER_EVENT_INIT(_enum, _enum, e{item.Name}),";
                             break;
-                        case 4:
+                        case TextType.DEVIO_CONSTS:
                             str += $"\n\t const tsDevIo *{item.Name},";
                             break;
-                        case 5:
+                        case TextType.DEVCOM_CONSTS:
                             str += $"\n\t const tsDevCom *{item.Name},";
                             break;
-                        case 6:
+                        case TextType.FUNC_PARAMS:
                             str += $", _{item.Name}";
                             break;
-                        case 7:
+                        case TextType.FUNC_CREATE_PARAMS:
                             str += $", {item.Name}";
                             break;
-                        case 8:
+                        case TextType.PARAMS_INIT:
                             str += $"\\\n\t .{item.Name} = &_{item.Name},";
                             break;
                         default:
