@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -57,6 +58,8 @@ namespace WindowsFormsApp1
             TimerEvents = new List<ProcessItem>();
             DevIO = new List<ProcessItem>();
             DevCom = new List<ProcessItem>();
+            goingEvents = new List<Process>();
+            comingEvents = new List<Process> ();
             description = "";
             author = "";
             debugName = "";
@@ -81,7 +84,10 @@ namespace WindowsFormsApp1
         public List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
         [JsonProperty]
         public static Dictionary<string, int> ItemDict { get => itemDict; set => itemDict = value; }
+        [JsonProperty]
         public List<Process> GoingEvents { get => goingEvents; set => goingEvents = value; }
+        [JsonProperty]
+        public List<Process> ComingEvents { get => comingEvents; set => comingEvents = value; }
 
         public void generateFiles(string path)
         {
@@ -117,11 +123,42 @@ namespace WindowsFormsApp1
             sb.Replace("%DEVCOM_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devCom));
             sb.Replace("%DEVIO_INIT%", arrangeText(TextType.PARAMS_INIT, devIO));
             sb.Replace("%DEVCOM_INIT%", arrangeText(TextType.PARAMS_INIT, devCom));
-            sb.Replace("%PROCESS_CONSTS%", arrangeText(TextType.PARAMS_INIT, devCom));//
-            sb.Replace("%PROCESS_EVENTS%", arrangeText(TextType.FUNC_PARAMS, devCom));//
-            sb.Replace("%PROCESS_INIT%", arrangeText(TextType.PROCESS_INIT, devCom));//
+            sb.Replace("%PROCESS_CONSTS%", arrangeProcessText(TextType.PROCESS_CONSTS, comingEvents));//comingEvents
+            //sb.Replace("%PROCESS_CONSTS%", arrangeProcessText(TextType.PARAMS_INIT, devCom));//---
+            sb.Replace("%PROCESS_EVENTS%", arrangeProcessText(TextType.FUNC_PARAMS, comingEvents));//comingEvents
+            sb.Replace("%PROCESS_INIT%", arrangeProcessText(TextType.PROCESS_INIT, comingEvents));//comingEvents
 
             return sb.ToString();
+        }
+
+        public static string arrangeProcessText(TextType textType, List<Process> list)
+        {
+            string str = string.Empty;
+            foreach (var item in list)
+            {
+                if (item.IsActive)
+                {
+                    switch (textType)
+                    {
+                        case TextType.PROCESS_CONSTS:
+                            str += $"\n\t const tProcessEnum {item.processName},";
+                            break;
+                        case TextType.FUNC_PARAMS:
+                            str += $", _{item.processName}";
+                            break;
+                        case TextType.PROCESS_INIT:
+                            str += $"\\\n\t .{item.processName} = _{item.processName},";
+                            break;
+                        case TextType.FUNC_CREATE_PARAMS:
+                            str += $", e{item.processName}";
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+            }
+            return str;
         }
 
         public static string arrangeText(TextType textType, List<ProcessItem> list)
@@ -265,6 +302,16 @@ namespace WindowsFormsApp1
             {
                 list.ElementAt(i).IsActive = true;
             }
+        }
+        public void addGoingEvents(Process process)
+        {
+            GoingEvents.Add(process);
+            process.ComingEvents.Add(this);
+        }
+        public void removeGoingEvents(Process process)
+        {
+            GoingEvents.Remove(process);
+            process.ComingEvents.Remove(this);
         }
 
     }

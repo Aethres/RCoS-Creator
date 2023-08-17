@@ -12,29 +12,48 @@ namespace WindowsFormsApp1.Components
 {
     public partial class ProcessEventSender : UserControl
     {
-        List<ComboBox> comboBoxes;
+        List<EventSenderBox> comboBoxes;
         List<Process> processList;
         private Point point;
-        public ProcessEventSender(List<Process> processList)
+        Process process;
+        public ProcessEventSender(List<Process> processList, Process process)
         {
             InitializeComponent();
             SendToBack();
-            comboBoxes = new List<ComboBox>();
-            this.processList = processList;
-            point = new Point(30, 50);
+            
+
+            if (process != null)
+            {
+                this.process = process;
+                comboBoxes = new List<EventSenderBox>();
+                this.processList = processList;
+                point = new Point(30, 50);
+                addComponents();
+            }
+            else
+            {
+                numericUpDown1.Hide();
+            }
+
         }
 
-        private void addProcess()
+        private void addComponents()
         {
-            ComboBox comboBox = new ComboBox();
-            comboBox.Text = "Process is not choosen";
-            
-            foreach (var item in processList)
+            foreach (Process item in process.GoingEvents)
             {
-                comboBox.Items.Add(item.ProcessName);
+                addProcess(item);
             }
+        }
+        private void addProcess(Process choosenProcess = null)
+        {
+            EventSenderBox comboBox = new EventSenderBox(processList, process);
+            if (choosenProcess != null)
+            {
+                comboBox.ChoosenProcess = choosenProcess;
+                comboBox.UpdateItems();
+            }
+            
             comboBox.Location = newCompenentLocation();
-            comboBox.SelectedIndex = 0;
             Controls.Add(comboBox);
             comboBox.Show();
 

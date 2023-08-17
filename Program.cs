@@ -48,7 +48,7 @@ namespace WindowsFormsApp1
             Application.Run(creatorWindow);
         }
 
-        public static void generateFiles(string path)
+        public static void generateFiles(string path, List<Process> processList)
         {
             foreach (var item in processList)
             {
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
                 {
                     processCreate += $"PROCESS_UI_CREATE({item.ProcessName}, " +
                         $"e{item.ProcessName}" +
-                        //$"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.ProcessName)}" +
+                        $"{Process.arrangeProcessText(TextType.FUNC_CREATE_PARAMS, item.ComingEvents)}" +
                         $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevIO)}" +
                         $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevCom)})\n";
                     processStart += $"\tprocessStart(&{item.ProcessName})\n";

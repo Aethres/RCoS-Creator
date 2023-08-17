@@ -81,7 +81,7 @@ namespace WindowsFormsApp1
                     oldEventSender = eventSender;
                 }
 
-                eventSender = new ProcessEventSender(processList);
+                eventSender = new ProcessEventSender(processList, process);
                 eventSender.AutoScroll = true;
                 eventSender.Location = new Point(445, 400);
                 eventSender.Show();
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                eventSender = new ProcessEventSender(processList);
+                eventSender = new ProcessEventSender(processList, process);
                 eventSender.AutoScroll = true;
                 eventSender.Location = new Point(445, 400);
                 eventSender.Hide();
@@ -174,7 +174,7 @@ namespace WindowsFormsApp1
 
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                Program.generateFiles(sf.SelectedPath);
+                Program.generateFiles(sf.SelectedPath, processList);
             }
 
         }
@@ -375,7 +375,7 @@ namespace WindowsFormsApp1
                 string file = openFileDialog.FileName;
                 try
                 {
-                    processList = SaveManager.ImportFiles(file, processList);
+                    processList = SaveManager.ImportFiles(file);
                     process = null;
                     numericUpDown1.Value = processList.Count;
                     numericUpDown2_ValueChanged(sender, e);

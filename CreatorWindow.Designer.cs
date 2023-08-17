@@ -555,7 +555,7 @@
             this.arcelikToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.arcelikToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("arcelikToolStripMenuItem.Image")));
             this.arcelikToolStripMenuItem.Name = "arcelikToolStripMenuItem";
-            this.arcelikToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.arcelikToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.arcelikToolStripMenuItem.Text = "Arcelik";
             // 
             // pictureBox1
@@ -670,7 +670,7 @@
             this.CodeSize.Name = "CodeSize";
             this.CodeSize.Size = new System.Drawing.Size(62, 31);
             this.CodeSize.TabIndex = 52;
-            this.CodeSize.Text = "0 kb";
+            this.CodeSize.Text = "0 KB";
             this.CodeSize.UseVisualStyleBackColor = true;
             // 
             // devCpxCount

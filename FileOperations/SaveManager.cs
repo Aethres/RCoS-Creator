@@ -11,18 +11,21 @@ namespace WindowsFormsApp1.FileOperations
 {
     public static class SaveManager
     {
-        public static List<Process> ImportFiles(string path, List<Process> processList)
+        public static List<Process> ImportFiles(string path)
         {
             string str = File.ReadAllText(Path.GetFullPath(path));
-            processList = JsonConvert.DeserializeObject<List<Process>>(str);
-            return processList;
+            return JsonConvert.DeserializeObject<List<Process>>(str);
         }
 
         public static void ExportFiles(string path, List<Process> processList)
         {
             if (processList.Any())
             {
-                string jsonString = JsonConvert.SerializeObject(processList);
+                JsonSerializerSettings settings = new JsonSerializerSettings()
+                {
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                };
+                string jsonString = JsonConvert.SerializeObject(processList, settings);
                 File.WriteAllText(path, jsonString);
             }
         }
