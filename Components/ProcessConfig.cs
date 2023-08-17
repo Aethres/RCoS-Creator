@@ -39,13 +39,13 @@ namespace WindowsFormsApp1
         private void addComponents()
         {
             addTextBoxes(process.Events);
-            point.X += 120;
+            point.X += 100;
             point.Y = 20;
             addTextBoxes(process.TimerEvents);
-            point.X += 120;
+            point.X += 100;
             point.Y = 20;
             addTextBoxes(process.DevIO);
-            point.X += 120;
+            point.X += 100;
             point.Y = 20;
             addTextBoxes(process.DevCom);
         }

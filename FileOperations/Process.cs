@@ -22,6 +22,8 @@ namespace WindowsFormsApp1
         string debugPorts;
         string processName;
         List<Process> processList;
+        List<Process> goingEvents;
+        List<Process> comingEvents;
         List<ProcessItem> events;
         List<ProcessItem> timerEvents;
         List<ProcessItem> devIO;
@@ -34,9 +36,11 @@ namespace WindowsFormsApp1
             TIMER_EVENTS_INIT,
             DEVIO_CONSTS,
             DEVCOM_CONSTS,
+            PROCESS_CONSTS,
             FUNC_PARAMS,
             FUNC_CREATE_PARAMS,
             PARAMS_INIT,
+            PROCESS_INIT,
         }
         
 
@@ -77,6 +81,7 @@ namespace WindowsFormsApp1
         public List<ProcessItem> DevCom { get => devCom; set => devCom = value; }
         [JsonProperty]
         public static Dictionary<string, int> ItemDict { get => itemDict; set => itemDict = value; }
+        public List<Process> GoingEvents { get => goingEvents; set => goingEvents = value; }
 
         public void generateFiles(string path)
         {
@@ -112,6 +117,9 @@ namespace WindowsFormsApp1
             sb.Replace("%DEVCOM_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devCom));
             sb.Replace("%DEVIO_INIT%", arrangeText(TextType.PARAMS_INIT, devIO));
             sb.Replace("%DEVCOM_INIT%", arrangeText(TextType.PARAMS_INIT, devCom));
+            sb.Replace("%PROCESS_CONSTS%", arrangeText(TextType.PARAMS_INIT, devCom));//
+            sb.Replace("%PROCESS_EVENTS%", arrangeText(TextType.FUNC_PARAMS, devCom));//
+            sb.Replace("%PROCESS_INIT%", arrangeText(TextType.PROCESS_INIT, devCom));//
 
             return sb.ToString();
         }
@@ -141,6 +149,9 @@ namespace WindowsFormsApp1
                         case TextType.DEVCOM_CONSTS:
                             str += $"\n\t const tsDevCom *{item.Name},";
                             break;
+                        case TextType.PROCESS_CONSTS:
+                            str += $"\n\t const tProcessEnum {item.Name},";
+                            break;
                         case TextType.FUNC_PARAMS:
                             str += $", _{item.Name}";
                             break;
@@ -149,6 +160,9 @@ namespace WindowsFormsApp1
                             break;
                         case TextType.PARAMS_INIT:
                             str += $"\\\n\t .{item.Name} = &_{item.Name},";
+                            break;
+                        case TextType.PROCESS_INIT:
+                            str += $"\\\n\t .{item.Name} = _{item.Name},";
                             break;
                         default:
                             break;

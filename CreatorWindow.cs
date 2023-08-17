@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApp1.Components;
 using WindowsFormsApp1.FileOperations;
 using WindowsFormsApp1.Properties;
 
@@ -22,6 +23,7 @@ namespace WindowsFormsApp1
         List<Process> processList;
         Process process;
         ProcessConfig processConfig;
+        ProcessEventSender eventSender;
 
         private const string DEBUG_LOST_FOCUS_TEXT = "Use \",\" for multiple entries";
         public CreatorWindow(List<Process> processList)
@@ -35,8 +37,12 @@ namespace WindowsFormsApp1
             ComponentLocker();
             UpdateProcessConfig();
             debugPortsBehavior();
+            //UpdateEventSender();
             pictureBox1.SendToBack();
             pictureBox2.SendToBack();
+            StartPosition = FormStartPosition.Manual;
+            Location = new Point(0, 0);
+            Logo.BackColor = Color.Transparent;
 
             foreach (var item in Program.platformNames)
             {
@@ -65,6 +71,36 @@ namespace WindowsFormsApp1
                 }
             };
         }
+        private void UpdateEventSender()
+        {
+            if (process != null)
+            {
+                ProcessEventSender oldEventSender = null;
+                if (eventSender != null)
+                {
+                    oldEventSender = eventSender;
+                }
+
+                eventSender = new ProcessEventSender(processList);
+                eventSender.AutoScroll = true;
+                eventSender.Location = new Point(600, 20);
+                eventSender.Show();
+
+                this.Controls.Add(processConfig);
+                if (oldEventSender != null)
+                {
+                    oldEventSender.Hide();
+                }
+            }
+            else
+            {
+                eventSender = new ProcessEventSender(processList);
+                eventSender.AutoScroll = true;
+                eventSender.Location = new Point(600, 20);
+                eventSender.Show();
+                this.Controls.Add(eventSender);
+            }
+        }
 
         private void UpdateProcessConfig()
         {
@@ -78,7 +114,7 @@ namespace WindowsFormsApp1
 
                 processConfig = new ProcessConfig(process);
                 processConfig.AutoScroll = true;
-                processConfig.Location = new Point(21, 300);
+                processConfig.Location = new Point(21, 422);
                 processConfig.Show();
 
                 this.Controls.Add(processConfig);
@@ -91,7 +127,7 @@ namespace WindowsFormsApp1
             {
                 processConfig = new ProcessConfig(process);
                 processConfig.AutoScroll = true;
-                processConfig.Location = new Point(21, 300);
+                processConfig.Location = new Point(21, 422);
                 processConfig.Show();
                 this.Controls.Add(processConfig);
             }
@@ -381,6 +417,34 @@ namespace WindowsFormsApp1
         private void rCoSSiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.rcossdk.com");
+        }
+
+        private void FreeRTOSButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show($"This function will be addded later.",
+                                     $"Work In Progress!",
+                                     MessageBoxButtons.OK);
+        }
+
+        private void SecureButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show($"This function will be addded later.",
+                                     $"Work In Progress!",
+                                     MessageBoxButtons.OK);
+        }
+
+        private void ClassBButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show($"This function will be addded later.",
+                                     $"Work In Progress!",
+                                     MessageBoxButtons.OK);
+        }
+
+        private void AIButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show($"This function will be addded later.",
+                                     $"Work In Progress!",
+                                     MessageBoxButtons.OK);
         }
     }
 }
