@@ -14,11 +14,14 @@ namespace WindowsFormsApp1.Components
     {
         List<ComboBox> comboBoxes;
         List<Process> processList;
+        private Point point;
         public ProcessEventSender(List<Process> processList)
         {
             InitializeComponent();
+            SendToBack();
             comboBoxes = new List<ComboBox>();
             this.processList = processList;
+            point = new Point(30, 50);
         }
 
         private void addProcess()
@@ -30,11 +33,17 @@ namespace WindowsFormsApp1.Components
             {
                 comboBox.Items.Add(item.ProcessName);
             }
-            comboBox.Location = new Point(30, 30);
+            comboBox.Location = newCompenentLocation();
             comboBox.SelectedIndex = 0;
             Controls.Add(comboBox);
             comboBox.Show();
 
+        }
+
+        private Point newCompenentLocation()
+        {
+            point.Y += 30;
+            return new Point(point.X, point.Y);
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)

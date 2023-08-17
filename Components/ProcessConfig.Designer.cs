@@ -34,9 +34,10 @@
             // processName
             // 
             this.processName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.processName.Location = new System.Drawing.Point(299, 12);
+            this.processName.Location = new System.Drawing.Point(144, 10);
+            this.processName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.processName.Name = "processName";
-            this.processName.Size = new System.Drawing.Size(194, 30);
+            this.processName.Size = new System.Drawing.Size(146, 26);
             this.processName.TabIndex = 2;
             this.processName.Text = "ProcessName";
             this.processName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -44,13 +45,14 @@
             // 
             // ProcessConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.processName);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ProcessConfig";
-            this.Size = new System.Drawing.Size(785, 448);
+            this.Size = new System.Drawing.Size(621, 364);
             this.ResumeLayout(false);
             this.PerformLayout();
 

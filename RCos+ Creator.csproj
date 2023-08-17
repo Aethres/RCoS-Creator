@@ -167,6 +167,7 @@
     <None Include="Resources\Arcelik_RCoS_v6.pdf" />
     <None Include="Resources\RCoSIcon.ico" />
     <None Include="Resources\Logo.bmp" />
+    <None Include="Resources\ArcelikLogo.png" />
     <Content Include="Templates\tempRCoS_c.txt" />
     <Content Include="Templates\tempRCoS_h.txt" />
     <Content Include="Templates\tempApp_c.txt" />

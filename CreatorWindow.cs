@@ -35,9 +35,9 @@ namespace WindowsFormsApp1
 
             InitializeComponent();
             ComponentLocker();
+            UpdateEventSender();
             UpdateProcessConfig();
             debugPortsBehavior();
-            //UpdateEventSender();
             pictureBox1.SendToBack();
             pictureBox2.SendToBack();
             StartPosition = FormStartPosition.Manual;
@@ -83,10 +83,10 @@ namespace WindowsFormsApp1
 
                 eventSender = new ProcessEventSender(processList);
                 eventSender.AutoScroll = true;
-                eventSender.Location = new Point(600, 20);
+                eventSender.Location = new Point(445, 400);
                 eventSender.Show();
 
-                this.Controls.Add(processConfig);
+                this.Controls.Add(eventSender);
                 if (oldEventSender != null)
                 {
                     oldEventSender.Hide();
@@ -96,14 +96,15 @@ namespace WindowsFormsApp1
             {
                 eventSender = new ProcessEventSender(processList);
                 eventSender.AutoScroll = true;
-                eventSender.Location = new Point(600, 20);
-                eventSender.Show();
+                eventSender.Location = new Point(445, 400);
+                eventSender.Hide();
                 this.Controls.Add(eventSender);
             }
         }
 
         private void UpdateProcessConfig()
         {
+            UpdateEventSender();
             if (process != null)
             {
                 ProcessConfig oldProcessConfig = null;
@@ -114,7 +115,7 @@ namespace WindowsFormsApp1
 
                 processConfig = new ProcessConfig(process);
                 processConfig.AutoScroll = true;
-                processConfig.Location = new Point(21, 422);
+                processConfig.Location = new Point(14, 400);
                 processConfig.Show();
 
                 this.Controls.Add(processConfig);
@@ -127,7 +128,7 @@ namespace WindowsFormsApp1
             {
                 processConfig = new ProcessConfig(process);
                 processConfig.AutoScroll = true;
-                processConfig.Location = new Point(21, 422);
+                processConfig.Location = new Point(14, 400);
                 processConfig.Show();
                 this.Controls.Add(processConfig);
             }
@@ -147,6 +148,8 @@ namespace WindowsFormsApp1
                 description.Enabled = false;
                 debugPorts.Enabled = false;
                 resetButton.Enabled = false;
+                devCpxCount.Enabled = false;
+                devMemCount.Enabled = false;
             }
             else
             {
@@ -160,6 +163,8 @@ namespace WindowsFormsApp1
                 description.Enabled = true;
                 debugPorts.Enabled = true;
                 resetButton.Enabled = true;
+                devCpxCount.Enabled = true;
+                devMemCount.Enabled = true;
             }
         }
 
@@ -445,6 +450,26 @@ namespace WindowsFormsApp1
             DialogResult confirmResult = MessageBox.Show($"This function will be addded later.",
                                      $"Work In Progress!",
                                      MessageBoxButtons.OK);
+        }
+
+        private void ledBlinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.rcossdk.com");
+        }
+
+        private void buzzerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.rcossdk.com");
+        }
+
+        private void encoderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.rcossdk.com");
+        }
+
+        private void reflexGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.rcossdk.com");
         }
     }
 }
