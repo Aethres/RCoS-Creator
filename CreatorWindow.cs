@@ -471,5 +471,12 @@ namespace WindowsFormsApp1
         {
             System.Diagnostics.Process.Start("https://www.rcossdk.com");
         }
+
+        private void CodeSizeButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show($"This function will be addded later.",
+                         $"Work In Progress!",
+                         MessageBoxButtons.OK);
+        }
     }
 }

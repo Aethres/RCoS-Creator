@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             {
                 if (item.IsActive)
                 {
-                    processCreate += $"PROCESS_UI_CREATE({item.ProcessName}, " +
+                    processCreate += $"PROCESS_{item.ProcessName.ToUpper()}_CREATE({item.ProcessName}, " +
                         $"e{item.ProcessName}" +
                         $"{Process.arrangeProcessText(TextType.FUNC_CREATE_PARAMS, item.ComingEvents)}" +
                         $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevIO)}" +
