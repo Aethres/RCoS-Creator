@@ -29,6 +29,8 @@ namespace WindowsFormsApp1
         List<ProcessItem> timerEvents;
         List<ProcessItem> devIO;
         List<ProcessItem> devCom;
+        List<ProcessItem> devMem;
+        List<ProcessItem> devCpx;
         static Dictionary<string, int> itemDict= new Dictionary<string, int>();
         public enum TextType
         {
@@ -37,11 +39,14 @@ namespace WindowsFormsApp1
             TIMER_EVENTS_INIT,
             DEVIO_CONSTS,
             DEVCOM_CONSTS,
+            DEVCPX_CONSTS,
+            DEVMEM_CONSTS,
             PROCESS_CONSTS,
             FUNC_PARAMS,
             FUNC_CREATE_PARAMS,
             PARAMS_INIT,
             PROCESS_INIT,
+            SWITCH_CASE_EVENTS,
         }
         
 
@@ -58,6 +63,8 @@ namespace WindowsFormsApp1
             TimerEvents = new List<ProcessItem>();
             DevIO = new List<ProcessItem>();
             DevCom = new List<ProcessItem>();
+            DevMem = new List<ProcessItem>();
+            DevCpx = new List<ProcessItem>();
             goingEvents = new List<Process>();
             comingEvents = new List<Process> ();
             description = "";
@@ -88,6 +95,8 @@ namespace WindowsFormsApp1
         public List<Process> GoingEvents { get => goingEvents; set => goingEvents = value; }
         [JsonProperty]
         public List<Process> ComingEvents { get => comingEvents; set => comingEvents = value; }
+        public List<ProcessItem> DevMem { get => devMem; set => devMem = value; }
+        public List<ProcessItem> DevCpx { get => devCpx; set => devCpx = value; }
 
         public void generateFiles(string path)
         {
@@ -112,21 +121,29 @@ namespace WindowsFormsApp1
             sb.Replace("%YEAR%", DateTime.Today.Year.ToString());
             sb.Replace("%DATE%", DateTime.Today.ToString("d/MM/yyyy"));
 
-            //header only
+            //c file only
+            sb.Replace("%SWITCH_CASE_EVENTS%", arrangeText(TextType.SWITCH_CASE_EVENTS, events));
+
+            //h file only
             sb.Replace("%EVENTS%", arrangeText(TextType.EVENTS, events));
             sb.Replace("%TIMER_EVENTS%", arrangeText(TextType.EVENTS, timerEvents));
             sb.Replace("%TIMER_EVENTS_PARAMETERS%", arrangeText(TextType.TIMER_EVENTS_PARAMS, timerEvents));
             sb.Replace("%TIMER_EVENTS_INIT%", arrangeText(TextType.TIMER_EVENTS_INIT, timerEvents));
             sb.Replace("%DEVIO%", arrangeText(TextType.DEVIO_CONSTS, devIO));
             sb.Replace("%DEVCOM%", arrangeText(TextType.DEVCOM_CONSTS, devCom));
+            sb.Replace("%DEVCPX%", arrangeText(TextType.DEVCPX_CONSTS, devCpx));
+            sb.Replace("%DEVMEM%", arrangeText(TextType.DEVMEM_CONSTS, devMem));
             sb.Replace("%DEVIO_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devIO));
             sb.Replace("%DEVCOM_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devCom));
+            sb.Replace("%DEVCPX_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devCpx));
+            sb.Replace("%DEVMEM_FUNC_PARAMS%", arrangeText(TextType.FUNC_PARAMS, devMem));
             sb.Replace("%DEVIO_INIT%", arrangeText(TextType.PARAMS_INIT, devIO));
             sb.Replace("%DEVCOM_INIT%", arrangeText(TextType.PARAMS_INIT, devCom));
-            sb.Replace("%PROCESS_CONSTS%", arrangeProcessText(TextType.PROCESS_CONSTS, comingEvents));//comingEvents
-            //sb.Replace("%PROCESS_CONSTS%", arrangeProcessText(TextType.PARAMS_INIT, devCom));//---
-            sb.Replace("%PROCESS_EVENTS%", arrangeProcessText(TextType.FUNC_PARAMS, comingEvents));//comingEvents
-            sb.Replace("%PROCESS_INIT%", arrangeProcessText(TextType.PROCESS_INIT, comingEvents));//comingEvents
+            sb.Replace("%DEVCPX_INIT%", arrangeText(TextType.PARAMS_INIT, devCpx));
+            sb.Replace("%DEVMEM_INIT%", arrangeText(TextType.PARAMS_INIT, devMem));
+            sb.Replace("%PROCESS_CONSTS%", arrangeProcessText(TextType.PROCESS_CONSTS, comingEvents));
+            sb.Replace("%PROCESS_EVENTS%", arrangeProcessText(TextType.FUNC_PARAMS, comingEvents));
+            sb.Replace("%PROCESS_INIT%", arrangeProcessText(TextType.PROCESS_INIT, comingEvents));
 
             return sb.ToString();
         }
@@ -186,6 +203,12 @@ namespace WindowsFormsApp1
                         case TextType.DEVCOM_CONSTS:
                             str += $"\n\t const tsDevCom *{item.Name},";
                             break;
+                        case TextType.DEVCPX_CONSTS:
+                            str += $"\n\t const tsDevCpx *{item.Name},";
+                            break;
+                        case TextType.DEVMEM_CONSTS:
+                            str += $"\n\t const tsDevMem *{item.Name},";
+                            break;
                         case TextType.PROCESS_CONSTS:
                             str += $"\n\t const tProcessEnum {item.Name},";
                             break;
@@ -200,6 +223,9 @@ namespace WindowsFormsApp1
                             break;
                         case TextType.PROCESS_INIT:
                             str += $"\\\n\t .{item.Name} = _{item.Name},";
+                            break;
+                        case TextType.SWITCH_CASE_EVENTS:
+                            str += $"\n\t\tcase {item.Name}:\n\t\t\tbreak;";
                             break;
                         default:
                             break;
@@ -240,6 +266,13 @@ namespace WindowsFormsApp1
             TimerEvents = new List<ProcessItem>();
             DevIO = new List<ProcessItem>();
             DevCom = new List<ProcessItem>();
+            DevCpx = new List<ProcessItem>();
+            DevMem = new List<ProcessItem>();
+            int count = goingEvents.Count;
+            for (int i = 0; i < count; i++)
+            {
+                removeGoingEvents(GoingEvents.First());
+            }
             description = "";
             author = "";
             debugName = "";

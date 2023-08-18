@@ -297,6 +297,24 @@ namespace WindowsFormsApp1
             UpdateProcessConfig();
         }
 
+        private void devCpxCount_ValueChanged(object sender, EventArgs e)
+        {
+            if (process != null)
+            {
+                Process.listUpdate(process.DevCpx, (int)devCpxCount.Value, "DevCpx");
+            }
+            UpdateProcessConfig();
+        }
+
+        private void devMemCount_ValueChanged(object sender, EventArgs e)
+        {
+            if (process != null)
+            {
+                Process.listUpdate(process.DevMem, (int)devMemCount.Value, "DevMem");
+            }
+            UpdateProcessConfig();
+        }
+
         private void debugName_TextChanged(object sender, EventArgs e)
         {
             if (process != null)

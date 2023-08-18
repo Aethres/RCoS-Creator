@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Xml.Linq;
+using WindowsFormsApp1.FileGenerators;
 
 namespace WindowsFormsApp1.Components
 {
@@ -21,7 +24,6 @@ namespace WindowsFormsApp1.Components
             InitializeComponent();
             SendToBack();
             
-
             if (process != null)
             {
                 this.process = process;
@@ -29,6 +31,7 @@ namespace WindowsFormsApp1.Components
                 this.processList = processList;
                 point = new Point(30, 50);
                 addComponents();
+                numericUpDown1.Value = comboBoxes.Count;
             }
             else
             {
@@ -56,6 +59,7 @@ namespace WindowsFormsApp1.Components
             comboBox.Location = newCompenentLocation();
             Controls.Add(comboBox);
             comboBox.Show();
+            comboBoxes.Add(comboBox);
 
         }
 

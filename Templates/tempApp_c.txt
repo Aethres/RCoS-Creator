@@ -78,9 +78,7 @@ static PROCESS_HANDLER_PROTO(%APPNAME%Handler)
     UNUSED(consts); // REMOVE IF USED
 
     switch (eventCurrent.event)
-    {
-        case EVENT_NONE: // FILL WITH NEW EVENTS
-            break;
+    {%SWITCH_CASE_EVENTS%
 
         default:
             break;

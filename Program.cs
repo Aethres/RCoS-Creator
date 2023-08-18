@@ -78,7 +78,10 @@ namespace WindowsFormsApp1
                         $"e{item.ProcessName}" +
                         $"{Process.arrangeProcessText(TextType.FUNC_CREATE_PARAMS, item.ComingEvents)}" +
                         $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevIO)}" +
-                        $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevCom)})\n";
+                        $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevCom)}" +
+                        $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevCpx)}" +
+                        $"{Process.arrangeText(TextType.FUNC_CREATE_PARAMS, item.DevMem)}" +
+                        $")\n";
                     processStart += $"\tprocessStart(&{item.ProcessName})\n";
                 }
             }

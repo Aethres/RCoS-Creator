@@ -52,7 +52,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.FreeRTOSButton = new System.Windows.Forms.Button();
+            this.AIButton = new System.Windows.Forms.Button();
+            this.CodeSizeButton = new System.Windows.Forms.Button();
+            this.SecureButton = new System.Windows.Forms.Button();
+            this.ClassBButton = new System.Windows.Forms.Button();
+            this.CodeSize = new System.Windows.Forms.Button();
+            this.devCpxCount = new System.Windows.Forms.NumericUpDown();
+            this.devCpx = new System.Windows.Forms.RichTextBox();
+            this.devMemCount = new System.Windows.Forms.NumericUpDown();
+            this.devMem = new System.Windows.Forms.RichTextBox();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,32 +87,19 @@
             this.encoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reflexGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arcelikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Logo = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.FreeRTOSButton = new System.Windows.Forms.Button();
-            this.AIButton = new System.Windows.Forms.Button();
-            this.CodeSizeButton = new System.Windows.Forms.Button();
-            this.SecureButton = new System.Windows.Forms.Button();
-            this.ClassBButton = new System.Windows.Forms.Button();
-            this.CodeSize = new System.Windows.Forms.Button();
-            this.devCpxCount = new System.Windows.Forms.NumericUpDown();
-            this.devCpx = new System.Windows.Forms.RichTextBox();
-            this.devMemCount = new System.Windows.Forms.NumericUpDown();
-            this.devMem = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timerEventsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.devIOCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.devComCount)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.devCpxCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.devMemCount)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -107,7 +107,7 @@
             this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(30, 126);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(176, 21);
@@ -121,7 +121,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(343, 354);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(225, 41);
             this.button1.TabIndex = 1;
@@ -132,7 +132,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(30, 157);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Multiline = false;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -143,7 +143,7 @@
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(30, 181);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Multiline = false;
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
@@ -154,7 +154,7 @@
             // events
             // 
             this.events.Location = new System.Drawing.Point(30, 205);
-            this.events.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.events.Margin = new System.Windows.Forms.Padding(2);
             this.events.Multiline = false;
             this.events.Name = "events";
             this.events.ReadOnly = true;
@@ -165,7 +165,7 @@
             // timerEvents
             // 
             this.timerEvents.Location = new System.Drawing.Point(30, 229);
-            this.timerEvents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timerEvents.Margin = new System.Windows.Forms.Padding(2);
             this.timerEvents.Multiline = false;
             this.timerEvents.Name = "timerEvents";
             this.timerEvents.ReadOnly = true;
@@ -176,7 +176,7 @@
             // devIO
             // 
             this.devIO.Location = new System.Drawing.Point(30, 253);
-            this.devIO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.devIO.Margin = new System.Windows.Forms.Padding(2);
             this.devIO.Multiline = false;
             this.devIO.Name = "devIO";
             this.devIO.ReadOnly = true;
@@ -187,7 +187,7 @@
             // devCom
             // 
             this.devCom.Location = new System.Drawing.Point(30, 277);
-            this.devCom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.devCom.Margin = new System.Windows.Forms.Padding(2);
             this.devCom.Multiline = false;
             this.devCom.Name = "devCom";
             this.devCom.ReadOnly = true;
@@ -198,7 +198,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(143, 157);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             128,
             0,
@@ -212,7 +212,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(143, 181);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             128,
             0,
@@ -226,7 +226,7 @@
             // eventsCount
             // 
             this.eventsCount.Location = new System.Drawing.Point(143, 207);
-            this.eventsCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.eventsCount.Margin = new System.Windows.Forms.Padding(2);
             this.eventsCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -240,7 +240,7 @@
             // timerEventsCount
             // 
             this.timerEventsCount.Location = new System.Drawing.Point(143, 230);
-            this.timerEventsCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timerEventsCount.Margin = new System.Windows.Forms.Padding(2);
             this.timerEventsCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -254,7 +254,7 @@
             // devIOCount
             // 
             this.devIOCount.Location = new System.Drawing.Point(143, 255);
-            this.devIOCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.devIOCount.Margin = new System.Windows.Forms.Padding(2);
             this.devIOCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -268,7 +268,7 @@
             // devComCount
             // 
             this.devComCount.Location = new System.Drawing.Point(143, 279);
-            this.devComCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.devComCount.Margin = new System.Windows.Forms.Padding(2);
             this.devComCount.Maximum = new decimal(new int[] {
             128,
             0,
@@ -283,7 +283,7 @@
             // 
             this.resetButton.BackColor = System.Drawing.SystemColors.Control;
             this.resetButton.Location = new System.Drawing.Point(30, 357);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(2);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(176, 34);
             this.resetButton.TabIndex = 21;
@@ -294,7 +294,7 @@
             // debugName
             // 
             this.debugName.Location = new System.Drawing.Point(315, 269);
-            this.debugName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.debugName.Margin = new System.Windows.Forms.Padding(2);
             this.debugName.Name = "debugName";
             this.debugName.Size = new System.Drawing.Size(282, 20);
             this.debugName.TabIndex = 25;
@@ -303,7 +303,7 @@
             // author
             // 
             this.author.Location = new System.Drawing.Point(315, 128);
-            this.author.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.author.Margin = new System.Windows.Forms.Padding(2);
             this.author.Name = "author";
             this.author.Size = new System.Drawing.Size(282, 20);
             this.author.TabIndex = 26;
@@ -312,7 +312,7 @@
             // description
             // 
             this.description.Location = new System.Drawing.Point(315, 160);
-            this.description.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.description.Margin = new System.Windows.Forms.Padding(2);
             this.description.Multiline = true;
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(282, 89);
@@ -335,7 +335,7 @@
             // 
             this.debugPorts.ForeColor = System.Drawing.Color.Gray;
             this.debugPorts.Location = new System.Drawing.Point(315, 303);
-            this.debugPorts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.debugPorts.Margin = new System.Windows.Forms.Padding(2);
             this.debugPorts.Name = "debugPorts";
             this.debugPorts.Size = new System.Drawing.Size(282, 20);
             this.debugPorts.TabIndex = 29;
@@ -378,23 +378,171 @@
             this.label3.TabIndex = 38;
             this.label3.Text = "Description";
             // 
-            // menuStrip1
+            // pictureBox1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(45, 16);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.rCoSSiteToolStripMenuItem,
-            this.examplesToolStripMenuItem,
-            this.arcelikToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
-            this.menuStrip1.TabIndex = 40;
-            this.menuStrip1.Text = "menuStrip1";
+            this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 118);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(207, 283);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Location = new System.Drawing.Point(219, 118);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(416, 283);
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            // 
+            // Logo
+            // 
+            this.Logo.BackColor = System.Drawing.SystemColors.Control;
+            this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
+            this.Logo.Location = new System.Drawing.Point(114, 25);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(62, 62);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logo.TabIndex = 43;
+            this.Logo.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(180, 30);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(329, 51);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "RCoS+ Creator";
+            // 
+            // FreeRTOSButton
+            // 
+            this.FreeRTOSButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FreeRTOSButton.Location = new System.Drawing.Point(14, 83);
+            this.FreeRTOSButton.Margin = new System.Windows.Forms.Padding(2);
+            this.FreeRTOSButton.Name = "FreeRTOSButton";
+            this.FreeRTOSButton.Size = new System.Drawing.Size(106, 31);
+            this.FreeRTOSButton.TabIndex = 45;
+            this.FreeRTOSButton.Text = "FreeRTOS";
+            this.FreeRTOSButton.UseVisualStyleBackColor = true;
+            this.FreeRTOSButton.Click += new System.EventHandler(this.FreeRTOSButton_Click);
+            // 
+            // AIButton
+            // 
+            this.AIButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AIButton.Location = new System.Drawing.Point(331, 83);
+            this.AIButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AIButton.Name = "AIButton";
+            this.AIButton.Size = new System.Drawing.Size(62, 31);
+            this.AIButton.TabIndex = 48;
+            this.AIButton.Text = "AI";
+            this.AIButton.UseVisualStyleBackColor = true;
+            this.AIButton.Click += new System.EventHandler(this.AIButton_Click);
+            // 
+            // CodeSizeButton
+            // 
+            this.CodeSizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CodeSizeButton.Location = new System.Drawing.Point(393, 83);
+            this.CodeSizeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.CodeSizeButton.Name = "CodeSizeButton";
+            this.CodeSizeButton.Size = new System.Drawing.Size(185, 31);
+            this.CodeSizeButton.TabIndex = 49;
+            this.CodeSizeButton.Text = "Estimated Code Size";
+            this.CodeSizeButton.UseVisualStyleBackColor = true;
+            this.CodeSizeButton.Click += new System.EventHandler(this.CodeSizeButton_Click);
+            // 
+            // SecureButton
+            // 
+            this.SecureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.SecureButton.Location = new System.Drawing.Point(121, 83);
+            this.SecureButton.Margin = new System.Windows.Forms.Padding(2);
+            this.SecureButton.Name = "SecureButton";
+            this.SecureButton.Size = new System.Drawing.Size(104, 31);
+            this.SecureButton.TabIndex = 50;
+            this.SecureButton.Text = "Secure";
+            this.SecureButton.UseVisualStyleBackColor = true;
+            this.SecureButton.Click += new System.EventHandler(this.SecureButton_Click);
+            // 
+            // ClassBButton
+            // 
+            this.ClassBButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ClassBButton.Location = new System.Drawing.Point(225, 83);
+            this.ClassBButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ClassBButton.Name = "ClassBButton";
+            this.ClassBButton.Size = new System.Drawing.Size(106, 31);
+            this.ClassBButton.TabIndex = 51;
+            this.ClassBButton.Text = "Class B";
+            this.ClassBButton.UseVisualStyleBackColor = true;
+            this.ClassBButton.Click += new System.EventHandler(this.ClassBButton_Click);
+            // 
+            // CodeSize
+            // 
+            this.CodeSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CodeSize.Location = new System.Drawing.Point(573, 83);
+            this.CodeSize.Margin = new System.Windows.Forms.Padding(2);
+            this.CodeSize.Name = "CodeSize";
+            this.CodeSize.Size = new System.Drawing.Size(62, 31);
+            this.CodeSize.TabIndex = 52;
+            this.CodeSize.Text = "0 KB";
+            this.CodeSize.UseVisualStyleBackColor = true;
+            // 
+            // devCpxCount
+            // 
+            this.devCpxCount.Location = new System.Drawing.Point(143, 301);
+            this.devCpxCount.Margin = new System.Windows.Forms.Padding(2);
+            this.devCpxCount.Maximum = new decimal(new int[] {
+            128,
+            0,
+            0,
+            0});
+            this.devCpxCount.Name = "devCpxCount";
+            this.devCpxCount.Size = new System.Drawing.Size(62, 20);
+            this.devCpxCount.TabIndex = 54;
+            this.devCpxCount.ValueChanged += new System.EventHandler(this.devCpxCount_ValueChanged);
+            // 
+            // devCpx
+            // 
+            this.devCpx.Location = new System.Drawing.Point(30, 301);
+            this.devCpx.Margin = new System.Windows.Forms.Padding(2);
+            this.devCpx.Multiline = false;
+            this.devCpx.Name = "devCpx";
+            this.devCpx.ReadOnly = true;
+            this.devCpx.Size = new System.Drawing.Size(110, 20);
+            this.devCpx.TabIndex = 53;
+            this.devCpx.Text = "DevCpx";
+            // 
+            // devMemCount
+            // 
+            this.devMemCount.Location = new System.Drawing.Point(143, 325);
+            this.devMemCount.Margin = new System.Windows.Forms.Padding(2);
+            this.devMemCount.Maximum = new decimal(new int[] {
+            128,
+            0,
+            0,
+            0});
+            this.devMemCount.Name = "devMemCount";
+            this.devMemCount.Size = new System.Drawing.Size(62, 20);
+            this.devMemCount.TabIndex = 56;
+            this.devMemCount.ValueChanged += new System.EventHandler(this.devMemCount_ValueChanged);
+            // 
+            // devMem
+            // 
+            this.devMem.Location = new System.Drawing.Point(30, 325);
+            this.devMem.Margin = new System.Windows.Forms.Padding(2);
+            this.devMem.Multiline = false;
+            this.devMem.Name = "devMem";
+            this.devMem.ReadOnly = true;
+            this.devMem.Size = new System.Drawing.Size(110, 20);
+            this.devMem.TabIndex = 55;
+            this.devMem.Text = "DevMem";
             // 
             // saveToolStripMenuItem
             // 
@@ -552,175 +700,32 @@
             // 
             // arcelikToolStripMenuItem
             // 
+            this.arcelikToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.arcelikToolStripMenuItem.AutoSize = false;
             this.arcelikToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.arcelikToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("arcelikToolStripMenuItem.Image")));
+            this.arcelikToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 210, 0);
             this.arcelikToolStripMenuItem.Name = "arcelikToolStripMenuItem";
             this.arcelikToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.arcelikToolStripMenuItem.Text = "Arcelik";
             // 
-            // pictureBox1
+            // menuStrip1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 123);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(207, 278);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(219, 123);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(416, 278);
-            this.pictureBox2.TabIndex = 42;
-            this.pictureBox2.TabStop = false;
-            // 
-            // Logo
-            // 
-            this.Logo.BackColor = System.Drawing.SystemColors.Control;
-            this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
-            this.Logo.Location = new System.Drawing.Point(94, 25);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(62, 62);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logo.TabIndex = 43;
-            this.Logo.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(160, 30);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(329, 51);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "RCoS+ Creator";
-            // 
-            // FreeRTOSButton
-            // 
-            this.FreeRTOSButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.FreeRTOSButton.Location = new System.Drawing.Point(2, 88);
-            this.FreeRTOSButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.FreeRTOSButton.Name = "FreeRTOSButton";
-            this.FreeRTOSButton.Size = new System.Drawing.Size(106, 31);
-            this.FreeRTOSButton.TabIndex = 45;
-            this.FreeRTOSButton.Text = "FreeRTOS";
-            this.FreeRTOSButton.UseVisualStyleBackColor = true;
-            this.FreeRTOSButton.Click += new System.EventHandler(this.FreeRTOSButton_Click);
-            // 
-            // AIButton
-            // 
-            this.AIButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AIButton.Location = new System.Drawing.Point(331, 88);
-            this.AIButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.AIButton.Name = "AIButton";
-            this.AIButton.Size = new System.Drawing.Size(58, 31);
-            this.AIButton.TabIndex = 48;
-            this.AIButton.Text = "AI";
-            this.AIButton.UseVisualStyleBackColor = true;
-            this.AIButton.Click += new System.EventHandler(this.AIButton_Click);
-            // 
-            // CodeSizeButton
-            // 
-            this.CodeSizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.CodeSizeButton.Location = new System.Drawing.Point(393, 88);
-            this.CodeSizeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.CodeSizeButton.Name = "CodeSizeButton";
-            this.CodeSizeButton.Size = new System.Drawing.Size(185, 31);
-            this.CodeSizeButton.TabIndex = 49;
-            this.CodeSizeButton.Text = "Estimated Code Size";
-            this.CodeSizeButton.UseVisualStyleBackColor = true;
-            this.CodeSizeButton.Click += new System.EventHandler(this.CodeSizeButton_Click);
-            // 
-            // SecureButton
-            // 
-            this.SecureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SecureButton.Location = new System.Drawing.Point(112, 88);
-            this.SecureButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.SecureButton.Name = "SecureButton";
-            this.SecureButton.Size = new System.Drawing.Size(106, 31);
-            this.SecureButton.TabIndex = 50;
-            this.SecureButton.Text = "Secure";
-            this.SecureButton.UseVisualStyleBackColor = true;
-            this.SecureButton.Click += new System.EventHandler(this.SecureButton_Click);
-            // 
-            // ClassBButton
-            // 
-            this.ClassBButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.ClassBButton.Location = new System.Drawing.Point(223, 88);
-            this.ClassBButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ClassBButton.Name = "ClassBButton";
-            this.ClassBButton.Size = new System.Drawing.Size(106, 31);
-            this.ClassBButton.TabIndex = 51;
-            this.ClassBButton.Text = "Class B";
-            this.ClassBButton.UseVisualStyleBackColor = true;
-            this.ClassBButton.Click += new System.EventHandler(this.ClassBButton_Click);
-            // 
-            // CodeSize
-            // 
-            this.CodeSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.CodeSize.Location = new System.Drawing.Point(573, 88);
-            this.CodeSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.CodeSize.Name = "CodeSize";
-            this.CodeSize.Size = new System.Drawing.Size(62, 31);
-            this.CodeSize.TabIndex = 52;
-            this.CodeSize.Text = "0 KB";
-            this.CodeSize.UseVisualStyleBackColor = true;
-            // 
-            // devCpxCount
-            // 
-            this.devCpxCount.Location = new System.Drawing.Point(143, 301);
-            this.devCpxCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.devCpxCount.Maximum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
-            this.devCpxCount.Name = "devCpxCount";
-            this.devCpxCount.Size = new System.Drawing.Size(62, 20);
-            this.devCpxCount.TabIndex = 54;
-            // 
-            // devCpx
-            // 
-            this.devCpx.Location = new System.Drawing.Point(30, 301);
-            this.devCpx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.devCpx.Multiline = false;
-            this.devCpx.Name = "devCpx";
-            this.devCpx.ReadOnly = true;
-            this.devCpx.Size = new System.Drawing.Size(110, 20);
-            this.devCpx.TabIndex = 53;
-            this.devCpx.Text = "DevCpx";
-            // 
-            // devMemCount
-            // 
-            this.devMemCount.Location = new System.Drawing.Point(143, 325);
-            this.devMemCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.devMemCount.Maximum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
-            this.devMemCount.Name = "devMemCount";
-            this.devMemCount.Size = new System.Drawing.Size(62, 20);
-            this.devMemCount.TabIndex = 56;
-            // 
-            // devMem
-            // 
-            this.devMem.Location = new System.Drawing.Point(30, 325);
-            this.devMem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.devMem.Multiline = false;
-            this.devMem.Name = "devMem";
-            this.devMem.ReadOnly = true;
-            this.devMem.Size = new System.Drawing.Size(110, 20);
-            this.devMem.TabIndex = 55;
-            this.devMem.Text = "DevMem";
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(45, 16);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.helpToolStripMenuItem,
+            this.rCoSSiteToolStripMenuItem,
+            this.examplesToolStripMenuItem,
+            this.arcelikToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
+            this.menuStrip1.TabIndex = 40;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // CreatorWindow
             // 
@@ -766,7 +771,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.CodeSize);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreatorWindow";
             this.Text = "RCoS+ Creator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -775,13 +780,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.timerEventsCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.devIOCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.devComCount)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.devCpxCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.devMemCount)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -810,30 +815,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem madeByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem emreKarabekToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem çağrıHocaoğluToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ToolStripMenuItem rCoSSiteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem examplesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ledBlinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem buzzerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem encoderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reflexGameToolStripMenuItem;
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button FreeRTOSButton;
@@ -846,7 +830,28 @@
         private System.Windows.Forms.RichTextBox devCpx;
         private System.Windows.Forms.NumericUpDown devMemCount;
         private System.Windows.Forms.RichTextBox devMem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem test3ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem madeByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem emreKarabekToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem çağrıHocaoğluToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem rCoSSiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem examplesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ledBlinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buzzerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem encoderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reflexGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arcelikToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }
 

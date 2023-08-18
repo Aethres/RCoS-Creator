@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
                 this.process = process;
                 processName.Text = process.ProcessName;
                 textBoxes = new List<TextBoxR>();
-                point = new Point(20, 20);
+                point = new Point(2, 20);
                 addComponents();
             }
             else
@@ -39,15 +39,21 @@ namespace WindowsFormsApp1
         private void addComponents()
         {
             addTextBoxes(process.Events);
-            point.X += 100;
+            point.X += 70;
             point.Y = 20;
             addTextBoxes(process.TimerEvents);
-            point.X += 100;
+            point.X += 70;
             point.Y = 20;
             addTextBoxes(process.DevIO);
-            point.X += 100;
+            point.X += 70;
             point.Y = 20;
             addTextBoxes(process.DevCom);
+            point.X += 70;
+            point.Y = 20;
+            addTextBoxes(process.DevCpx);
+            point.X += 70;
+            point.Y = 20;
+            addTextBoxes(process.DevMem);
         }
 
         private void addTextBoxes(List<ProcessItem> list)
@@ -58,6 +64,7 @@ namespace WindowsFormsApp1
                 {
                     TextBoxR textBox = new TextBoxR(item);
                     textBox.Location = newCompenentLocation();
+                    textBox.Size = new Size(70, textBox.Size.Height);
                     textBoxes.Add(textBox);
                     this.Controls.Add(textBox);
                     textBox.Show();
